@@ -15,7 +15,7 @@ public class SimpleTest {
         //1
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
-       // driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MICROSECONDS);
+       // driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MICROSECONDS);*
 
         String handle = driver.getWindowHandle();
         driver.switchTo().window(handle);
