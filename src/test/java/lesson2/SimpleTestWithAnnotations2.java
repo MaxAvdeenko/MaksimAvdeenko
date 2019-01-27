@@ -9,29 +9,29 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
+import static java.lang.System.setProperty;
 import static org.testng.Assert.assertEquals;
 
-public class SimpleTest2 extends SeleniumBase {
+public class SimpleTestWithAnnotations2 extends SeleniumBase {
 
-    private   WebDriver driver;
-
-    @BeforeClass
+    private WebDriver driver;
 
     @BeforeMethod
-    public void beforeMethod(){
-
+    public void beforeMethod() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
+        driver.manage().timeouts().pageLoadTimeout(10000, TimeUnit.MILLISECONDS);
     }
 
     @AfterMethod
-    public void afterMethod(){
-
+    public void afterMethod() {
         driver.close();
     }
 
     @Test(invocationCount = 2)
-    public void simpleTest(){
+    public void simpleTest() {
 
         //2
         driver.navigate().to("https://epam.github.io/JDI/index.html");
@@ -44,9 +44,5 @@ public class SimpleTest2 extends SeleniumBase {
         driver.findElement(By.cssSelector("[id='name']")).sendKeys("epam");
         driver.findElement(By.cssSelector("[id='password']")).sendKeys("1234");
         driver.findElement(By.cssSelector("[id='login-button']")).click();
-
-
-
-
     }
 }
