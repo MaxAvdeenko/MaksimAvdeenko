@@ -17,6 +17,7 @@ public class SimpleTestWithDataProvider extends SeleniumBase {
 
     @DataProvider
     private Object[][] simpleDataProvider() {
+
         return new Object[][] {
                 {0, "Ivan"},
                 {1, "Roman"},
