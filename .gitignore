@@ -2,4 +2,6 @@
 out
 .idea
 target
+*.iws
+log/
 # TODO this file should be improved, main IDEA project file is missing
