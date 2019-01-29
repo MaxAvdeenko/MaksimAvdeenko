@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestNG Suite" parallel="methods" thread-count="3">
+
+    <test name="HomeSiteTestWithAnnotations">
+
+        <classes>
+            <class name="homeworks.hw2.ex3.HomeSiteTestWithAnnotations"/>
+        </classes>
+
+    </test>
+
+</suite>
