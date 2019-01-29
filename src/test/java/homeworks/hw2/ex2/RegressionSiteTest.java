@@ -12,6 +12,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class RegressionSiteTest {
+    // TODO Could you please rename test methods in according to groups.
     @Test(groups = {"Regression"})
     public void homeSiteTest() {
 
