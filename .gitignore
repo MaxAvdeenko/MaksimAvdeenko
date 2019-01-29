@@ -1,6 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
-
-.idea/
-*.iws
-log/
-target/
+out
+.idea
+target
+# TODO this file should be improved, main IDEA project file is missing
