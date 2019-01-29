@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 
 public class RegressionSiteTest {
     @Test(groups = {"Regression"})
-    public void homeSiteTest() {
+    public void homeSiteRegressionTest() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -122,7 +122,7 @@ public class RegressionSiteTest {
         driver.close();
     }
     @Test(groups = {"Regression"})
-    public void homeSiteTest1() {
+    public void homeSiteRegressionTest1() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -231,7 +231,7 @@ public class RegressionSiteTest {
         driver.close();
     }
     @Test(groups = {"Regression"})
-    public void homeSiteTest2() {
+    public void homeSiteRegressionTest2() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

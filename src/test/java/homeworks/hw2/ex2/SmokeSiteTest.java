@@ -15,7 +15,7 @@ public class SmokeSiteTest {
 
     @Test(groups = {"Smoke"})
 
-    public void homeSiteTest() {
+    public void homeSiteSmokeTest() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -124,7 +124,7 @@ public class SmokeSiteTest {
         driver.close();
     }
     @Test(groups = {"Smoke"})
-    public void homeSiteTest1() {
+    public void homeSiteSmokeTest1() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -233,7 +233,7 @@ public class SmokeSiteTest {
         driver.close();
     }
     @Test(groups = {"Smoke"})
-    public void homeSiteTest2() {
+    public void homeSiteSmokeTest2() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();

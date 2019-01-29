@@ -13,7 +13,7 @@ import static org.testng.Assert.assertTrue;
 
 public class SimultaneouslySmokeAndRegressionSiteTest {
     @Test(groups = {"Smoke", "Regression"})
-    public void homeSiteTest() {
+    public void homeSiteRegressionAndSmokeTest() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -122,7 +122,7 @@ public class SimultaneouslySmokeAndRegressionSiteTest {
         driver.close();
     }
     @Test(groups = {"Smoke", "Regression"})
-    public void homeSiteTest1() {
+    public void homeSiteRegressionAndSmokeTest1() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -231,7 +231,7 @@ public class SimultaneouslySmokeAndRegressionSiteTest {
         driver.close();
     }
     @Test(groups = {"Smoke", "Regression"})
-    public void homeSiteTest2() {
+    public void homeSiteRegressionAndSmokeTest2() {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
