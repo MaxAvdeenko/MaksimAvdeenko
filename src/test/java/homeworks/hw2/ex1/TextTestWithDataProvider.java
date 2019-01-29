@@ -18,6 +18,9 @@ public class TextTestWithDataProvider {
 
     // TODO That's a bit weird, as for me.
     // TODO Basically, we put only "data" in dataProvider, rather than some kind of logic.
+    
+    
+    // all fixed adaasasasd
     @DataProvider(parallel = true)
     private Object[][] textDataProvider() {
         return new Object[][]{
