@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class SelenodeSimpleWithPO {
+public class SelenideSimpleWithPO {
 
     private SelenideIndexPage indexPage;
 
