@@ -122,6 +122,7 @@ public class SmokeAndRegressionSiteTest {
         //17 Close Browser
         driver.close();
     }
+
     @Test(groups = {"Regression"})
     public void homeSiteRegressionTest1() {
 
@@ -231,6 +232,7 @@ public class SmokeAndRegressionSiteTest {
         //17 Close Browser
         driver.close();
     }
+
     @Test(groups = {"Regression"})
     public void homeSiteRegressionTest2() {
 

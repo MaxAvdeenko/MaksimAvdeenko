@@ -14,7 +14,6 @@ import static org.testng.Assert.assertTrue;
 public class SmokeSiteTest {
 
     @Test(groups = {"Smoke"})
-
     public void homeSiteSmokeTest() {
 
         WebDriver driver = new ChromeDriver();
@@ -123,6 +122,7 @@ public class SmokeSiteTest {
         //17 Close Browser
         driver.close();
     }
+
     @Test(groups = {"Smoke"})
     public void homeSiteSmokeTest1() {
 
@@ -232,6 +232,7 @@ public class SmokeSiteTest {
         //17 Close Browser
         driver.close();
     }
+
     @Test(groups = {"Smoke"})
     public void homeSiteSmokeTest2() {
 
