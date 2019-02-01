@@ -1,5 +1,6 @@
 package homeworks.hw3;
 
+import base.SeleniumBase;
 import homeworks.hw3.enumsWithPageData.HeaderItemsData;
 import homeworks.hw3.enumsWithPageData.Users;
 import org.openqa.selenium.WebDriver;
@@ -11,10 +12,10 @@ import org.testng.annotations.Test;
 
 import static homeworks.hw3.enumsWithPageData.HomePageData.*;
 
-public class PageObjectTest {
+public class PageObjectTest extends SeleniumBase {
 
-    private WebDriver driver;
     private IndexPage indexPage;
+    private WebDriver driver;
 
     @BeforeMethod
     public void beforeMethod() {

@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 import static homeworks.hw3.enumsWithPageData.HomePageData.*;
 import static org.testng.Assert.assertEquals;
@@ -30,7 +29,7 @@ public class IndexPage {
     @FindBy(css = "[id='user-name']")
     private WebElement userName;
 
-    @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 li a[href='index.html']")
+    @FindBy(css = "[class='uui-navigation nav navbar-nav m-l8']")
     private WebElement headerItems;
 
     @FindBy(css = ".icons-benefit.icon-practise")
@@ -72,13 +71,17 @@ public class IndexPage {
     @FindBy(css = ".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar")
     private WebElement leftSection;
 
-    @FindBy(css = "footer-bg")
+    @FindBy(css = "[class='footer-bg']")
     private WebElement footer;
 
     private WebDriver driver;
 
+    public IndexPage(WebDriver driver){
+        this.driver = driver;
+    }
+
     public void open(HomePageData url) {
-        driver.navigate().to(url.toString());
+        driver.get(url.toString());
     }
 
     public void checkTitle(HomePageData title) {
@@ -87,7 +90,7 @@ public class IndexPage {
 
     public void login(Users user) {
         loginIcon.click();
-        userField.sendKeys(user.name);
+        userField.sendKeys(user.login);
         passwordField.sendKeys(user.password);
         submitButton.click();
     }
@@ -96,9 +99,9 @@ public class IndexPage {
         assertEquals(userName.getText(), user.name);
     }
 
-    public void checkHeaderItems(HeaderItemsData[] texts) {
+    public void checkHeaderItems(HeaderItemsData[] itemsText) {
         assertTrue(headerItems.isDisplayed());
-        for (HeaderItemsData item : texts) {
+        for (HeaderItemsData item : itemsText) {
             assertTrue(headerItems.getText().contains(item.toString()));
         }
     }
