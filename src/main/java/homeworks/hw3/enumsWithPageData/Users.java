@@ -1,6 +1,6 @@
 package homeworks.hw3.enumsWithPageData;
 
-public enum  Users {
+public enum Users {
     PITER("epam", "1234", "PITER CHAILOVSKII");
 
     public final String login;

@@ -1,6 +1,6 @@
 package homeworks.hw3.enumsWithPageData;
 
-public enum  HeaderItemsData {
+public enum HeaderItemsData {
     HOME_TEXT("HOME"),
     CONTACTS_TEXT("CONTACT FORM"),
     SERCICE_TEXT("SERVICE"),

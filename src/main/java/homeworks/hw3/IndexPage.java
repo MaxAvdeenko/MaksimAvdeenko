@@ -57,13 +57,13 @@ public class IndexPage {
 
     @FindBy(css = ".main-title.text-center")
     private WebElement headerTitle;
-    
+
     @FindBy(css = ".main-txt.text-center")
     private WebElement headerText;
-    
+
     @FindBy(css = "[id='iframe']")
     private WebElement iframe;
-    
+
     @FindBy(css = ".uui-main-container a[target='_blank']")
     private WebElement subHeader;
 
@@ -75,7 +75,7 @@ public class IndexPage {
 
     private WebDriver driver;
 
-    public IndexPage(WebDriver driver){
+    public IndexPage(WebDriver driver) {
         this.driver = driver;
     }
 
