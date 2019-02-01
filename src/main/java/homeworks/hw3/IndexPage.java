@@ -8,7 +8,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import static homeworks.hw3.enumsWithPageData.HomePageData.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
