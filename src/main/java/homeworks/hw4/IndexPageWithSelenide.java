@@ -1,9 +1,9 @@
-package base.lesson4;
+package homeworks.hw4;
 
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 
-public class SelenideIndexPage {
+public class IndexPageWithSelenide {
     @FindBy(css = "[id='user-icon']")
     private SelenideElement loginIcon;
 
@@ -23,4 +23,3 @@ public class SelenideIndexPage {
         submitButton.click();
     }
 }
-
