@@ -1,13 +1,15 @@
 package homeworks.hw4;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import homeworks.hw4.enumsWithDiffElementsData.DiffElPageData;
+import homeworks.hw4.enumsWithDiffElementsData.*;
 import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Selenide.$;
+import java.util.List;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class DiffElPageWithSelenide {
     @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 li a[data-toggle='dropdown']")
@@ -28,14 +30,23 @@ public class DiffElPageWithSelenide {
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3)")
     private SelenideElement radios;
 
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
-    private SelenideElement dropdown;
+    @FindBy(css = ".colors")
+    private SelenideElement colorsDropdown;
 
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
     private SelenideElement button1;
 
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
     private SelenideElement button2;
+
+    @FindBy(css = "[name='log-sidebar']")
+    private SelenideElement rightSection;
+
+    @FindBy(css = "#mCSB_1_container")
+    private SelenideElement leftSection;
+
+    @FindBy(css = ".panel-body-list.logs li")
+    private List<SelenideElement> listLog;
 
     public void checkDiffElPage(DiffElPageData title) {
         serviceButton.click();
@@ -47,42 +58,78 @@ public class DiffElPageWithSelenide {
 
     public void checkDiffElPageInterface() {
         SelenideElement[] checkboxesArr = checkboxes.$$(".label-checkbox").toArray(new SelenideElement[0]);
-        for (SelenideElement option : checkboxesArr) {
-            assertTrue(option.isDisplayed());
+        for (SelenideElement checkbox : checkboxesArr) {
+            checkbox.should(Condition.visible);
         }
+        assertEquals(checkboxesArr.length, 4);
 
         SelenideElement[] radiosArr = radios.$$(".label-radio").toArray(new SelenideElement[0]);
-        for (SelenideElement option : radiosArr) {
-            assertTrue(option.isDisplayed());
+        for (SelenideElement radios : radiosArr) {
+            radios.should(Condition.visible);
         }
-
-        $(dropdown).isDisplayed();
-        $(button1).isDisplayed();
-        $(button2).isDisplayed();
+        assertEquals(radiosArr.length, 4);
+        colorsDropdown.should(Condition.visible);
+        button1.should(Condition.visible);
+        button2.should(Condition.visible);
     }
 
     public void checkForRightSection() {
-        $(".uui-side-bar.right-fix-panel.mCustomScrollbar._mCS_2.mCS_no_scrollbar").isDisplayed();
+        rightSection.should(Condition.visible);
     }
 
     public void checkForLeftSection() {
-        $(".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar").isDisplayed();
+        leftSection.should(Condition.visible);
     }
 
-    public void selectCheckboxes(DiffElPageData waterSelector, DiffElPageData windSelector) {
+    public void selectCheckboxes(CheckboxSelectors waterSelector, CheckboxSelectors windSelector) {
         checkboxes.$(waterSelector.toString()).click();
         checkboxes.$(windSelector.toString()).click();
     }
 
-    public void checkboxCorrectLog(DiffElPageData[] values) {
-        for (DiffElPageData value : values) {
-            System.out.println($("#mCSB_2_container > section:nth-child(1) > " +
-                    "div.info-panel-body.info-panel-body-log > div > ul > li:nth-child(1)").getText());
+    public void checkboxCorrectLog(CheckboxData[] values) {
+        for (CheckboxSelectors selector : CheckboxSelectors.values()) {
+            checkboxes.$(selector.toString()).click();
+        }
+        for (int i = 0; i < values.length; i++) {
+            listLog.get(i).shouldHave(text(values[values.length - i - 1].toString()));
         }
     }
 
-    public void selectRadio() {
-        radios.$("label:nth-child(4)").click();
+    public void selectRadio(RadioSelectors selenSelector) {
+        radios.$(selenSelector.toString()).click();
+    }
 
+    public void radiosCorectLog(RadioData[] values) {
+        for (RadioSelectors selector : RadioSelectors.values()) {
+            radios.$(selector.toString()).click();
+        }
+        for (int i = 0; i < values.length; i++) {
+            listLog.get(i).shouldHave(text(values[values.length - i - 1].toString()));
+        }
+    }
+
+    public void selectColor(ColorsSelectors yellowSelector) {
+        colorsDropdown.click();
+        colorsDropdown.$(yellowSelector.toString()).click();
+    }
+
+    public void colorsCorrectLog(ColorsData[] values) {
+        for (ColorsSelectors selector : ColorsSelectors.values()) {
+            colorsDropdown.$(selector.toString()).click();
+        }
+        colorsDropdown.click();
+        for (int i = 0; i < values.length; i++) {
+            listLog.get(i).shouldHave(text(values[values.length - i - 1].toString()));
+        }
+    }
+
+    public void unselectCheckboxes(CheckboxSelectors earthSelector, CheckboxSelectors fireSelector) {
+        checkboxes.$(earthSelector.toString()).click();
+        checkboxes.$(fireSelector.toString()).click();
+    }
+
+    public void checkLog() {
+        listLog.get(0).shouldHave(text("false"));
+        listLog.get(1).shouldHave(text("false"));
     }
 }

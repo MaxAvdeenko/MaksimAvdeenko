@@ -21,6 +21,9 @@ public class IndexPageWithSelenide {
     @FindBy(css = "[id='password']")
     private SelenideElement passwordField;
 
+    @FindBy(css = "[id='user-name']")
+    private SelenideElement usernameField;
+
     @FindBy(css = "[id='login-button']")
     private SelenideElement submitButton;
 
@@ -63,8 +66,8 @@ public class IndexPageWithSelenide {
     }
 
     public void checkUserIsLoggined(Users user) {
-        userField.should(Condition.visible);
-        userField.shouldHave(text(user.name));
+        usernameField.should(Condition.visible);
+        usernameField.shouldHave(text(user.name));
     }
 
     public void checkServiceDropDown() {
