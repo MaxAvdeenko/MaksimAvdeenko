@@ -1,4 +1,4 @@
-package homeworks.hw4.enumsWithDiffElementsData;
+package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
 public enum CheckboxData {
     CHECKBOX_1("WATER"),

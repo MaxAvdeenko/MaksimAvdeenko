@@ -1,4 +1,4 @@
-package homeworks.hw4.enumsWithDiffElementsData;
+package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
 public enum DiffElPageData {
     DIFFEl_HTML_URL("https://epam.github.io/JDI/different-elements.html"),

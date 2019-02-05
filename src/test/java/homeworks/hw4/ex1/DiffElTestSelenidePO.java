@@ -1,24 +1,23 @@
 package homeworks.hw4.ex1;
 
-import com.codeborne.selenide.Configuration;
+import base.SelenideBase;
 import homeworks.hw3.enumsWithPageData.Users;
-import homeworks.hw4.DiffElPageWithSelenide;
-import homeworks.hw4.IndexPageWithSelenide;
-import homeworks.hw4.enumsWithDiffElementsData.CheckboxData;
-import homeworks.hw4.enumsWithDiffElementsData.ColorsData;
-import homeworks.hw4.enumsWithDiffElementsData.RadioData;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxData;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.ColorsData;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.RadioData;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static homeworks.hw3.enumsWithPageData.HomePageData.HOME_PAGE_TITLE;
-import static homeworks.hw4.enumsWithDiffElementsData.CheckboxSelectors.*;
-import static homeworks.hw4.enumsWithDiffElementsData.ColorsSelectors.YELLOW_SELECTOR;
-import static homeworks.hw4.enumsWithDiffElementsData.DiffElPageData.DIFFEL_PAGE_TITLE;
-import static homeworks.hw4.enumsWithDiffElementsData.RadioSelectors.SELEN_SELECTOR;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxSelectors.WATER_SELECTOR;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxSelectors.WIND_SELECTOR;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.ColorsSelectors.YELLOW_SELECTOR;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData.DIFFEL_PAGE_TITLE;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.RadioSelectors.SELEN_SELECTOR;
 
-public class DiffElTestSelenidePO {
+public class DiffElTestSelenidePO extends SelenideBase {
 
     private IndexPageWithSelenide indexPage;
     private DiffElPageWithSelenide diffElPage;
@@ -28,16 +27,17 @@ public class DiffElTestSelenidePO {
         //1 Open test site by URL
         open("https://epam.github.io/JDI/index.html");
         indexPage = page(IndexPageWithSelenide.class);
+
+        diffElPage = page(DiffElPageWithSelenide.class);
     }
 
     @AfterMethod
     public void closeTest() {
-        Configuration.holdBrowserOpen = true;
         close();
     }
 
     @Test
-    public void SimTest() {
+    public void DifferentElementsPageTest() {
 
         //2 Assert Browser title
         indexPage.checkTitle(HOME_PAGE_TITLE);
@@ -55,7 +55,6 @@ public class DiffElTestSelenidePO {
         indexPage.checkServiceLeftSection();
 
         //7 Open through the header menu Service -> Different Elements Page
-        diffElPage = page(DiffElPageWithSelenide.class);
         diffElPage.checkDiffElPage(DIFFEL_PAGE_TITLE);
 
         //8 Check interface on Different elements page, it contains all needed elements
@@ -86,7 +85,7 @@ public class DiffElTestSelenidePO {
         diffElPage.colorsCorrectLog(ColorsData.values());
 
         //17 Unselect and assert checkboxes
-        diffElPage.unselectCheckboxes(EARTH_SELECTOR, FIRE_SELECTOR);
+        diffElPage.unselectCheckboxes(WATER_SELECTOR, WIND_SELECTOR);
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
         diffElPage.checkLog();

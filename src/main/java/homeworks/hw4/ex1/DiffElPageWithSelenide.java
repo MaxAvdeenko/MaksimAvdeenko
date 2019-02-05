@@ -1,8 +1,8 @@
-package homeworks.hw4;
+package homeworks.hw4.ex1;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import homeworks.hw4.enumsWithDiffElementsData.*;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.*;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -93,6 +93,10 @@ public class DiffElPageWithSelenide {
         for (int i = 0; i < values.length; i++) {
             listLog.get(i).shouldHave(text(values[values.length - i - 1].toString()));
         }
+        //This loop is necessary for elements "water" and "wind" remained selected(step 17,18)
+        for (CheckboxSelectors selector : CheckboxSelectors.values()) {
+            checkboxes.$(selector.toString()).click();
+        }
     }
 
     public void selectRadio(RadioSelectors selenSelector) {
@@ -123,9 +127,9 @@ public class DiffElPageWithSelenide {
         }
     }
 
-    public void unselectCheckboxes(CheckboxSelectors earthSelector, CheckboxSelectors fireSelector) {
-        checkboxes.$(earthSelector.toString()).click();
-        checkboxes.$(fireSelector.toString()).click();
+    public void unselectCheckboxes(CheckboxSelectors waterSelector, CheckboxSelectors windSelector) {
+        checkboxes.$(waterSelector.toString()).click();
+        checkboxes.$(windSelector.toString()).click();
     }
 
     public void checkLog() {

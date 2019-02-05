@@ -1,4 +1,4 @@
-package homeworks.hw4;
+package homeworks.hw4.ex1;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -33,7 +33,7 @@ public class IndexPageWithSelenide {
     @FindBy(css = "[class='dropdown-menu']")
     private SelenideElement serviceMenu;
 
-    @FindBy(css = "ul > li:nth-child(3) > a")
+    @FindBy(css = "#mCSB_1_container > ul > li:nth-child(3) > a")
     private SelenideElement serviceButtonLeft;
 
     @FindBy(css = "ul > li.menu-title > a > span")
@@ -84,8 +84,5 @@ public class IndexPageWithSelenide {
         for (SelenideElement option : options) {
             option.should(Condition.visible);
         }
-      /*  for (int i=0; i<options.length; i++){
-            options[i].should();
-        }*/
     }
 }

@@ -1,4 +1,4 @@
-package homeworks.hw4.enumsWithDiffElementsData;
+package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
 public enum RadioSelectors {
     GOLD_SELECTOR("div:nth-child(3) > label:nth-child(1)"),
