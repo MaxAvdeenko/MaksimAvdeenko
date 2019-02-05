@@ -1,13 +1,12 @@
 package homeworks.hw4;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import homeworks.hw3.enumsWithPageData.HomePageData;
 import homeworks.hw3.enumsWithPageData.Users;
-import homeworks.hw4.enumsWithDiffElementsData.CheckboxEnum;
 import org.openqa.selenium.support.FindBy;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -64,7 +63,8 @@ public class IndexPageWithSelenide {
     }
 
     public void checkUserIsLoggined(Users user) {
-        $("#user-name").shouldHave(text(user.name));
+        userField.should(Condition.visible);
+        userField.shouldHave(text(user.name));
     }
 
     public void checkServiceDropDown() {
@@ -79,56 +79,10 @@ public class IndexPageWithSelenide {
         serviceButtonLeft.click();
         SelenideElement[] options = serviceMenuLeft.$$("li").toArray(new SelenideElement[0]);
         for (SelenideElement option : options) {
-            assertTrue(option.isDisplayed());
+            option.should(Condition.visible);
         }
-    }
-
-    public void checkDiffElPage() {
-        serviceButton.click();
-        SelenideElement[] options = serviceMenu.$$("li").toArray(new SelenideElement[0]);
-        options[6].click();
-        assertEquals(getWebDriver().getTitle(), "Different Elements");
-
-    }
-
-    public void checkDiffElPageInterface() {
-        SelenideElement[] checkboxesArr = checkboxes.$$(".label-checkbox").toArray(new SelenideElement[0]);
-        for (SelenideElement option : checkboxesArr) {
-            assertTrue(option.isDisplayed());
-        }
-
-        SelenideElement[] radiosArr = radios.$$(".label-radio").toArray(new SelenideElement[0]);
-        for (SelenideElement option : radiosArr) {
-            assertTrue(option.isDisplayed());
-        }
-
-        $(dropdown).isDisplayed();
-        $(button1).isDisplayed();
-        $(button2).isDisplayed();
-    }
-
-    public void checkForRightSection() {
-        $(".uui-side-bar.right-fix-panel.mCustomScrollbar._mCS_2.mCS_no_scrollbar").isDisplayed();
-    }
-
-    public void checkForLeftSection() {
-        $(".uui-side-bar.mCustomScrollbar._mCS_1.mCS_no_scrollbar").isDisplayed();
-    }
-
-    public void selectCheckboxes(CheckboxEnum waterSelector, CheckboxEnum windSelector) {
-        checkboxes.$(waterSelector.toString()).click();
-        checkboxes.$(windSelector.toString()).click();
-    }
-
-    public void checkboxCorrectLog(CheckboxEnum[] values) {
-        for (CheckboxEnum value : values) {
-            System.out.println($("#mCSB_2_container > section:nth-child(1) > " +
-                    "div.info-panel-body.info-panel-body-log > div > ul > li:nth-child(1)").getText());
-        }
-    }
-
-    public void selectRadio() {
-        radios.$("label:nth-child(4)").click();
-
+      /*  for (int i=0; i<options.length; i++){
+            options[i].should();
+        }*/
     }
 }
