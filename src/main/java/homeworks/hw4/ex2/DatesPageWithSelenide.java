@@ -87,10 +87,10 @@ public class DatesPageWithSelenide {
 
     public void removeSlidersCustom() {
         actions().dragAndDropBy(sliders.get(0), -1000, 0).build().perform();
-        double oneStep = (double)(sliders.get(1).getLocation().getX() - sliders.get(0).getLocation().getX())/100;
-        int leftPosition = (int) Math.round(oneStep*30)-1;
+        double oneStep = (double) (sliders.get(1).getLocation().getX() - sliders.get(0).getLocation().getX()) / 100;
+        int leftPosition = (int) Math.round(oneStep * 30) - 1;
         actions().dragAndDropBy(sliders.get(0), leftPosition, 0).build().perform();
-        actions().dragAndDropBy(sliders.get(1), -leftPosition-2, 0).build().perform();
+        actions().dragAndDropBy(sliders.get(1), -leftPosition - 2, 0).build().perform();
     }
 
     public void removeSliders(int left, int right) {

@@ -26,7 +26,7 @@ public class DatesPageSliderCheck extends SelenideBase {
     }
 
     @Test
-    public void DatesPageTest(){
+    public void DatesPageTest() {
         //2 Assert Browser title
         datesPage.checkTitle(HOME_PAGE_TITLE);
 
@@ -43,25 +43,25 @@ public class DatesPageSliderCheck extends SelenideBase {
         datesPage.removeSliders(-1000, 1000);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkSliders(0,100);
+        datesPage.checkSliders(0, 100);
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
         datesPage.removeSliders(-1000, -1000);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkSliders(0,0);
+        datesPage.checkSliders(0, 0);
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
         datesPage.removeSlidersToRigth();
 
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkSlidersReverse(100,100);
+        datesPage.checkSlidersReverse(100, 100);
 
         //12 Using drag-and-drop set Range sliders. From = 30, To = 70
         datesPage.removeSlidersCustom();
 
         //13 Assert that for "From" and "To" sliders there are logs rows with corresponding values
-        datesPage.checkSliders(30,70);
+        datesPage.checkSliders(30, 70);
     }
 
 }
