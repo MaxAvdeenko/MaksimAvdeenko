@@ -40,13 +40,13 @@ public class DatesPageSliderCheck extends SelenideBase {
         datesPage.openDatesPage(DATES_PAGE_TITLE);
 
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        datesPage.removeSlidersAroundTheEdges();
+        datesPage.removeSliders(-1000, 1000);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSliders(0,100);
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-        datesPage.removeSlidersToLeft();
+        datesPage.removeSliders(-1000, -1000);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSliders(0,0);

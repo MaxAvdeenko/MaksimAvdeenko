@@ -66,11 +66,6 @@ public class DatesPageWithSelenide {
         assertEquals(getWebDriver().getTitle(), title.toString());
     }
 
-    public void removeSlidersAroundTheEdges() {
-        actions().dragAndDropBy(sliders.get(0), -1000, 0).build().perform();
-        actions().dragAndDropBy(sliders.get(1), 1000, 0).build().perform();
-    }
-
     public void checkSliders(int leftSlider, int rightSlider) {
         log.get(0).shouldHave(text(RIGHT_SLIDER.value));
         log.get(0).shouldHave(text(String.valueOf(rightSlider)));
@@ -85,11 +80,6 @@ public class DatesPageWithSelenide {
         log.get(1).shouldHave(text(String.valueOf(leftSlider)));
     }
 
-    public void removeSlidersToLeft() {
-        actions().dragAndDropBy(sliders.get(0), -1000, 0).build().perform();
-        actions().dragAndDropBy(sliders.get(1), -1000, 0).build().perform();
-    }
-
     public void removeSlidersToRigth() {
         actions().dragAndDropBy(sliders.get(1), 1000, 0).build().perform();
         actions().dragAndDropBy(sliders.get(0), 1000, 0).build().perform();
@@ -101,5 +91,10 @@ public class DatesPageWithSelenide {
         int leftPosition = (int) Math.round(oneStep*30)-1;
         actions().dragAndDropBy(sliders.get(0), leftPosition, 0).build().perform();
         actions().dragAndDropBy(sliders.get(1), -leftPosition-2, 0).build().perform();
+    }
+
+    public void removeSliders(int left, int right) {
+        actions().dragAndDropBy(sliders.get(0), left, 0).build().perform();
+        actions().dragAndDropBy(sliders.get(1), right, 0).build().perform();
     }
 }
