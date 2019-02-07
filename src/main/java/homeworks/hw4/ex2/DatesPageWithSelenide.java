@@ -1,7 +1,9 @@
 package homeworks.hw4.ex2;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.impl.CollectionElement;
 import homeworks.hw3.enumsWithPageData.HomePageData;
 import homeworks.hw3.enumsWithPageData.Users;
 import org.openqa.selenium.support.FindBy;
@@ -41,7 +43,7 @@ public class DatesPageWithSelenide {
     private List<SelenideElement> sliders;
 
     @FindBy(css = ".panel-body-list.logs li")
-    private List<SelenideElement> log;
+    private ElementsCollection log;
 
     public void checkTitle(HomePageData title) {
         assertEquals(getWebDriver().getTitle(), title.toString());
@@ -67,6 +69,7 @@ public class DatesPageWithSelenide {
     }
 
     public void checkSliders(int leftSlider, int rightSlider) {
+        // TODO Take a look here https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
         log.get(0).shouldHave(text(RIGHT_SLIDER.value));
         log.get(0).shouldHave(text(String.valueOf(rightSlider)));
         log.get(1).shouldHave(text(LEFT_SLIDER.value));
@@ -80,7 +83,7 @@ public class DatesPageWithSelenide {
         log.get(1).shouldHave(text(String.valueOf(leftSlider)));
     }
 
-    public void removeSlidersToRigth() {
+    public void removeSlidersToRight() {
         actions().dragAndDropBy(sliders.get(1), 1000, 0).build().perform();
         actions().dragAndDropBy(sliders.get(0), 1000, 0).build().perform();
     }

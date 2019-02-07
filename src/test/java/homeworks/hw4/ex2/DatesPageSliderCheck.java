@@ -39,6 +39,7 @@ public class DatesPageSliderCheck extends SelenideBase {
         //5 Open through the header menu Service -> Dates Page
         datesPage.openDatesPage(DATES_PAGE_TITLE);
 
+        // TODO The range of the slider is [0, 100] so you can't go beyond ...
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         datesPage.removeSliders(-1000, 1000);
 
@@ -52,7 +53,7 @@ public class DatesPageSliderCheck extends SelenideBase {
         datesPage.checkSliders(0, 0);
 
         //10 Using drag-and-drop set Range sliders. left sliders - the most rigth position, right slider - the most rigth position.
-        datesPage.removeSlidersToRigth();
+        datesPage.removeSlidersToRight();
 
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSlidersReverse(100, 100);

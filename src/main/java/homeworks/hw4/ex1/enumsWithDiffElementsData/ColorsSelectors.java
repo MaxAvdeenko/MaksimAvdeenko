@@ -1,6 +1,7 @@
 package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
 public enum ColorsSelectors {
+    // TODO Same story, locators, naming. Tale a look on CheckboxSelectors
     RED_SELECTOR("option:nth-child(1)"),
     GREEN_SELECTOR("option:nth-child(2)"),
     BLUE_SELECTOR("option:nth-child(3)"),

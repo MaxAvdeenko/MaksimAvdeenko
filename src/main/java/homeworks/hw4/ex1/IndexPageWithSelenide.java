@@ -39,6 +39,7 @@ public class IndexPageWithSelenide {
     @FindBy(css = "ul > li.menu-title > a > span")
     private SelenideElement serviceMenuLeft;
 
+    // TODO It is completely prohibited to use such locators !
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2)")
     private SelenideElement checkboxes;
 
