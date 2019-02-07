@@ -12,6 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
 public class DiffElPageWithSelenide {
+    // TODO You can create locator that will provide you with whole menu items
     @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 li a[data-toggle='dropdown']")
     private SelenideElement serviceButton;
 
@@ -24,18 +25,22 @@ public class DiffElPageWithSelenide {
     @FindBy(css = "ul > li.menu-title > a > span")
     private SelenideElement serviceMenuLeft;
 
+    // TODO This locator can be improved
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2)")
     private SelenideElement checkboxes;
 
+    // TODO This locator can be improved
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3)")
     private SelenideElement radios;
 
     @FindBy(css = ".colors")
     private SelenideElement colorsDropdown;
 
+    // TODO This locator can be improved
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
     private SelenideElement button1;
 
+    // TODO This locator can be improved
     @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
     private SelenideElement button2;
 
@@ -50,6 +55,7 @@ public class DiffElPageWithSelenide {
 
     public void checkDiffElPage(DiffElPageData title) {
         serviceButton.click();
+        // TODO Take a look on comment from line 15
         SelenideElement[] options = serviceMenu.$$("li").toArray(new SelenideElement[0]);
         options[6].click();
         assertEquals(getWebDriver().getTitle(), title.toString());
