@@ -11,11 +11,7 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static homeworks.hw3.enumsWithPageData.HomePageData.HOME_PAGE_TITLE;
-import static homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxSelectors.WATER_SELECTOR;
-import static homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxSelectors.WIND_SELECTOR;
-import static homeworks.hw4.ex1.enumsWithDiffElementsData.ColorsSelectors.YELLOW_SELECTOR;
 import static homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData.DIFFEL_PAGE_TITLE;
-import static homeworks.hw4.ex1.enumsWithDiffElementsData.RadioSelectors.SELEN_SELECTOR;
 
 public class DiffElTestSelenidePO extends SelenideBase {
 
@@ -67,27 +63,27 @@ public class DiffElTestSelenidePO extends SelenideBase {
         diffElPage.checkForLeftSection();
 
         //11 Select checkboxes
-        diffElPage.selectCheckboxes(WATER_SELECTOR, WIND_SELECTOR);
+        diffElPage.selectCheckboxes();
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkboxCorrectLog(CheckboxData.values());
+        diffElPage.checkboxCorrectLog(CheckboxData.WIND, CheckboxData.WATER);
 
         //13 Select radio
-        diffElPage.selectRadio(SELEN_SELECTOR);
+        diffElPage.selectRadio();
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        diffElPage.radiosCorectLog(RadioData.values());
+        diffElPage.radiosCorectLog(RadioData.SELEN);
 
         //15 Select in dropdown
-        diffElPage.selectColor(YELLOW_SELECTOR);
+        diffElPage.selectColor();
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        diffElPage.colorsCorrectLog(ColorsData.values());
+        diffElPage.colorsCorrectLog(ColorsData.YELLOW);
 
         //17 Unselect and assert checkboxes
-        diffElPage.unselectCheckboxes(WATER_SELECTOR, WIND_SELECTOR);
+        diffElPage.unselectCheckboxes();
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkLog();
+        diffElPage.checkLog(CheckboxData.WIND, CheckboxData.WATER);
     }
 }

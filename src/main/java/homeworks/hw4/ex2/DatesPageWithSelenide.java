@@ -3,7 +3,6 @@ package homeworks.hw4.ex2;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.impl.CollectionElement;
 import homeworks.hw3.enumsWithPageData.HomePageData;
 import homeworks.hw3.enumsWithPageData.Users;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +15,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static homeworks.hw4.ex2.DatesPageData.LEFT_SLIDER;
 import static homeworks.hw4.ex2.DatesPageData.RIGHT_SLIDER;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class DatesPageWithSelenide {
     @FindBy(css = "[id='user-icon']")
@@ -70,17 +70,13 @@ public class DatesPageWithSelenide {
 
     public void checkSliders(int leftSlider, int rightSlider) {
         // TODO Take a look here https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
-        log.get(0).shouldHave(text(RIGHT_SLIDER.value));
-        log.get(0).shouldHave(text(String.valueOf(rightSlider)));
-        log.get(1).shouldHave(text(LEFT_SLIDER.value));
-        log.get(1).shouldHave(text(String.valueOf(leftSlider)));
+        assertTrue(log.get(0).getText().contains(("(" + RIGHT_SLIDER.value + "):" + rightSlider)));
+        assertTrue(log.get(1).getText().contains(("(" + LEFT_SLIDER.value + "):" + leftSlider)));
     }
 
     public void checkSlidersReverse(int leftSlider, int rightSlider) {
-        log.get(0).shouldHave(text(LEFT_SLIDER.value));
-        log.get(0).shouldHave(text(String.valueOf(rightSlider)));
-        log.get(1).shouldHave(text(RIGHT_SLIDER.value));
-        log.get(1).shouldHave(text(String.valueOf(leftSlider)));
+        assertTrue(log.get(0).getText().contains(("(" + LEFT_SLIDER.value + "):" + rightSlider)));
+        assertTrue(log.get(1).getText().contains(("(" + RIGHT_SLIDER.value + "):" + leftSlider)));
     }
 
     public void removeSlidersToRight() {
@@ -97,6 +93,8 @@ public class DatesPageWithSelenide {
     }
 
     public void removeSliders(int left, int right) {
+        left = left == 0 ? -1000 : 1000;
+        right = right == 0 ? -1000 : 1000;
         actions().dragAndDropBy(sliders.get(0), left, 0).build().perform();
         actions().dragAndDropBy(sliders.get(1), right, 0).build().perform();
     }

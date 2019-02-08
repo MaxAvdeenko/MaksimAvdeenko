@@ -40,21 +40,6 @@ public class IndexPageWithSelenide {
     private SelenideElement serviceMenuLeft;
 
     // TODO It is completely prohibited to use such locators !
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(2)")
-    private SelenideElement checkboxes;
-
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div:nth-child(3)")
-    private SelenideElement radios;
-
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > div.colors > select")
-    private SelenideElement dropdown;
-
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > button")
-    private SelenideElement button1;
-
-    @FindBy(css = "body > div > div.uui-main-container.page-inside > main > div.main-content > div > input")
-    private SelenideElement button2;
-
     public void checkTitle(HomePageData title) {
         assertEquals(getWebDriver().getTitle(), title.toString());
     }

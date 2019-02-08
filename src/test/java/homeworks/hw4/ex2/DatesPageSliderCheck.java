@@ -41,13 +41,13 @@ public class DatesPageSliderCheck extends SelenideBase {
 
         // TODO The range of the slider is [0, 100] so you can't go beyond ...
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
-        datesPage.removeSliders(-1000, 1000);
+        datesPage.removeSliders(0, 100);
 
         //7 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSliders(0, 100);
 
         //8 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most left position.
-        datesPage.removeSliders(-1000, -1000);
+        datesPage.removeSliders(0, 0);
 
         //9 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSliders(0, 0);

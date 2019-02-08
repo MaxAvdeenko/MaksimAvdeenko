@@ -2,5 +2,7 @@
 out
 /.idea/
 /target
+/allure-results
+/build
 /automation-winter-2019.iml
 # TODO THis file should be updated cause of allure.
