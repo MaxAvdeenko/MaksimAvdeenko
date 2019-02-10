@@ -1,5 +1,6 @@
 package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
+/*
 public enum ColorsSelectors {
     // TODO Same story, locators, naming. Tale a look on CheckboxSelectors
     RED_SELECTOR("option:nth-child(1)"),
@@ -18,3 +19,4 @@ public enum ColorsSelectors {
         return value;
     }
 }
+*/
