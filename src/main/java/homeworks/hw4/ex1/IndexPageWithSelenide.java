@@ -39,7 +39,6 @@ public class IndexPageWithSelenide {
     @FindBy(css = "ul > li.menu-title > a > span")
     private SelenideElement serviceMenuLeft;
 
-    // TODO It is completely prohibited to use such locators !
     public void checkTitle(HomePageData title) {
         assertEquals(getWebDriver().getTitle(), title.toString());
     }

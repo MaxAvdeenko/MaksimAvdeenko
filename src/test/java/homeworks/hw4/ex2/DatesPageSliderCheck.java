@@ -39,7 +39,6 @@ public class DatesPageSliderCheck extends SelenideBase {
         //5 Open through the header menu Service -> Dates Page
         datesPage.openDatesPage(DATES_PAGE_TITLE);
 
-        // TODO The range of the slider is [0, 100] so you can't go beyond ...
         //6 Using drag-and-drop set Range sliders. left sliders - the most left position, right slider - the most rigth position
         datesPage.removeSliders(0, 100);
 
@@ -58,6 +57,19 @@ public class DatesPageSliderCheck extends SelenideBase {
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkSlidersReverse(100, 100);
 
+        // TODO NO! You should not hard-code values inside of hte method.
+        // TODO Once again, you should have only ONE method on PO that can be used in order to
+        // TODO move slide at whatever we want position.
+        /*
+        DatesPage {
+            @FindBy
+            ...
+            private methods
+            ...
+            public setSliderPosition(int, int)
+            public checkLogs(...)
+        }
+         */
         //12 Using drag-and-drop set Range sliders. From = 30, To = 70
         datesPage.removeSlidersCustom();
 

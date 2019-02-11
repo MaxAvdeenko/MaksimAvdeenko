@@ -1,14 +1,13 @@
 package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
-public enum RadioData {
-    // TODO Same story, locators, naming. Tale a look on CheckboxSelectors
+public enum Metals {
     GOLD("GOLD"),
     SILVER("SILVER"),
     BRONZE("BRONZE"),
     SELEN("SELEN");
     private String value;
 
-    RadioData (String value) {
+    Metals(String value) {
         this.value = value;
     }
 
