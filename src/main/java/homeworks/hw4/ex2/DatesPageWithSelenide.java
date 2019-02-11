@@ -17,6 +17,8 @@ import static homeworks.hw4.ex2.DatesPageData.RIGHT_SLIDER;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+// TODO You should not store every elements on one page !
+// TODO You already have IndexPage, why don't you use it ?
 public class DatesPageWithSelenide {
     @FindBy(css = "[id='user-icon']")
     private SelenideElement loginIcon;
@@ -63,13 +65,14 @@ public class DatesPageWithSelenide {
 
     public void openDatesPage(DatesPageData title) {
         serviceButton.click();
-        SelenideElement[] options = serviceMenu.$$("li").toArray(new SelenideElement[0]);
-        options[1].click();
+        // TODO But anyway, you should not find elements in PO methods...
+        serviceMenu.$$("li").get(1).click();
         assertEquals(getWebDriver().getTitle(), title.toString());
     }
 
     public void checkSliders(int leftSlider, int rightSlider) {
         // TODO Take a look here https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
+        // TODO You should not use testNg assertions in this task, take a look on Selenide approach.
         assertTrue(log.get(0).getText().contains(("(" + RIGHT_SLIDER.value + "):" + rightSlider)));
         assertTrue(log.get(1).getText().contains(("(" + LEFT_SLIDER.value + "):" + leftSlider)));
     }
@@ -86,12 +89,13 @@ public class DatesPageWithSelenide {
 
     public void removeSlidersCustom() {
         actions().dragAndDropBy(sliders.get(0), -1000, 0).build().perform();
-        double oneStep = (double) (sliders.get(1).getLocation().getX() - sliders.get(0).getLocation().getX()) / 100;
+        double oneStep = (sliders.get(1).getLocation().getX() - sliders.get(0).getLocation().getX()) / 100.0;
         int leftPosition = (int) Math.round(oneStep * 30) - 1;
         actions().dragAndDropBy(sliders.get(0), leftPosition, 0).build().perform();
         actions().dragAndDropBy(sliders.get(1), -leftPosition - 2, 0).build().perform();
     }
 
+    // TODO What do you mean "remove" sliders ?
     public void removeSliders(int left, int right) {
         left = left == 0 ? -1000 : 1000;
         right = right == 0 ? -1000 : 1000;

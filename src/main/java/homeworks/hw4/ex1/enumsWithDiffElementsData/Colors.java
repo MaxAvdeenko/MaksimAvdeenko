@@ -1,14 +1,13 @@
 package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
-public enum ColorsData {
-    // TODO Oh my, why don't you named enums like RED, BLUE, etc ?
+public enum Colors {
     RED("RED"),
     GREEN("GREEN"),
     BLUE("BLUE"),
     YELLOW("YELLOW");
     private String value;
 
-    ColorsData (String value) {
+    Colors(String value) {
         this.value = value;
     }
 

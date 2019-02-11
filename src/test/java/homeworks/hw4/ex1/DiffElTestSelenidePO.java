@@ -2,9 +2,9 @@ package homeworks.hw4.ex1;
 
 import base.SelenideBase;
 import homeworks.hw3.enumsWithPageData.Users;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.CheckboxData;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.ColorsData;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.RadioData;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.Colors;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.Metals;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -21,6 +21,7 @@ public class DiffElTestSelenidePO extends SelenideBase {
     @BeforeMethod
     public void initTest() {
         //1 Open test site by URL
+        // TODO Basically, you should not hard-code strings...
         open("https://epam.github.io/JDI/index.html");
         indexPage = page(IndexPageWithSelenide.class);
 
@@ -63,27 +64,35 @@ public class DiffElTestSelenidePO extends SelenideBase {
         diffElPage.checkForLeftSection();
 
         //11 Select checkboxes
+        // TODO This method should be parametrised !
+        // TODO This method should be named in a different way,
+        // TODO just trying to think what are you going to select (in business/domain perspective)
         diffElPage.selectCheckboxes();
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkboxCorrectLog(CheckboxData.WIND, CheckboxData.WATER);
+        diffElPage.checkboxCorrectLog(NatureElements.WIND, NatureElements.WATER);
 
         //13 Select radio
+        // TODO This method should be parametrised !
+        // TODO Same comments like .selectCheckboxes() method.
         diffElPage.selectRadio();
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        diffElPage.radiosCorectLog(RadioData.SELEN);
+        // TODO Naming
+        diffElPage.radiosCorectLog(Metals.SELEN);
 
         //15 Select in dropdown
+        // TODO Same as .selectCheckboxes() method
         diffElPage.selectColor();
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        diffElPage.colorsCorrectLog(ColorsData.YELLOW);
+        diffElPage.colorsCorrectLog(Colors.YELLOW);
 
         //17 Unselect and assert checkboxes
+        // TODO Same as .selectCheckboxes() method
         diffElPage.unselectCheckboxes();
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkLog(CheckboxData.WIND, CheckboxData.WATER);
+        diffElPage.checkLog(NatureElements.WIND, NatureElements.WATER);
     }
 }

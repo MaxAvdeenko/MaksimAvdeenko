@@ -1,13 +1,13 @@
 package homeworks.hw4.ex1.enumsWithDiffElementsData;
 
-public enum CheckboxData {
+public enum NatureElements {
     WATER("WATER"),
     EARTH("EARTH"),
     WIND("WIND"),
     FIRE("FIRE");
     private String value;
 
-    CheckboxData (String value) {
+    NatureElements(String value) {
         this.value = value;
     }
 
