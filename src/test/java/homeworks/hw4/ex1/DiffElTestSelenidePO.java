@@ -24,7 +24,6 @@ public class DiffElTestSelenidePO extends SelenideBase {
     @BeforeMethod
     public void initTest() {
         //1 Open test site by URL
-        // TODO Basically, you should not hard-code strings...
         open(INDEX_HTML_URL.toString());
         indexPage = page(IndexPageWithSelenide.class);
 
@@ -67,9 +66,6 @@ public class DiffElTestSelenidePO extends SelenideBase {
         diffElPage.checkForLeftSection();
 
         //11 Select checkboxes
-        // TODO This method should be parametrised !
-        // TODO This method should be named in a different way,
-        // TODO just trying to think what are you going to select (in business/domain perspective)
         diffElPage.clickOnNatureElement(WIND);
         diffElPage.clickOnNatureElement(WATER);
 
@@ -77,24 +73,19 @@ public class DiffElTestSelenidePO extends SelenideBase {
         diffElPage.checkNatureElementsLog(WIND, NatureElements.WATER);
 
         //13 Select radio
-        // TODO This method should be parametrised !
-        // TODO Same comments like .selectCheckboxes() method.
         diffElPage.selectMetal(SELEN);
 
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
-        // TODO Naming
         diffElPage.checkMetalsLog(SELEN);
 
         //15 Select in dropdown
-        // TODO Same as .selectCheckboxes() method
         diffElPage.selectColor(YELLOW);
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
         diffElPage.checkColorsLog(YELLOW);
 
         //17 Unselect and assert checkboxes
-        // TODO Same as .selectCheckboxes() method
         diffElPage.clickOnNatureElement(WIND);
         diffElPage.clickOnNatureElement(WATER);
 

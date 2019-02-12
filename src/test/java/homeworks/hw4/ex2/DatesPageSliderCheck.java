@@ -61,19 +61,6 @@ public class DatesPageSliderCheck extends SelenideBase {
         //11 Assert that for "From" and "To" sliders there are logs rows with corresponding values
         datesPage.checkLogs(100, 100);
 
-        // TODO NO! You should not hard-code values inside of hte method.
-        // TODO Once again, you should have only ONE method on PO that can be used in order to
-        // TODO move slide at whatever we want position.
-        /*
-        DatesPage {
-            @FindBy
-            ...
-            private methods
-            ...
-            public setSliderPosition(int, int)
-            public checkLogs(...)
-        }
-         */
         //12 Using drag-and-drop set Range sliders. From = 30, To = 70
         datesPage.setSliderPosition(30, 70);
 
