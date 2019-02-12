@@ -9,10 +9,8 @@ import static com.codeborne.selenide.Selenide.actions;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
-// TODO You should not store every elements on one page !
-// TODO You already have IndexPage, why don't you use it ?
-public class DatesPageWithSelenide {
 
+public class DatesPageWithSelenide {
 
     @FindBy(css = ".uui-navigation.nav.navbar-nav.m-l8 li a[data-toggle='dropdown']")
     private SelenideElement serviceButton;
@@ -31,26 +29,14 @@ public class DatesPageWithSelenide {
 
     public void openDatesPage(DatesPageData title) {
         serviceButton.click();
-        // TODO But anyway, you should not find elements in PO methods...
         serviceMenuList.get(1).click();
         assertEquals(getWebDriver().getTitle(), title.toString());
     }
 
     public void checkLogs(Integer leftSlider, Integer rightSlider) {
-        // TODO Take a look here https://selenide.gitbooks.io/user-guide/content/en/selenide-api/elements-collection.html
-        // TODO You should not use testNg assertions in this task, take a look on Selenide approach.
-
         log.get(1).shouldHave(Condition.text(leftSlider.toString()));
         log.get(0).shouldHave(Condition.text(rightSlider.toString()));
     }
-
-    // TODO What do you mean "remove" sliders ?
-    /*public void replaceSliders(int left, int right) {
-        left = left == 0 ? -1000 : 1000;
-        right = right == 0 ? -1000 : 1000;
-        actions().dragAndDropBy(sliders.get(0), left, 0).build().perform();
-        actions().dragAndDropBy(sliders.get(1), right, 0).build().perform();
-    }*/
 
     public void setSliderPosition(int left, int right) {
         if (left == 0) {
@@ -68,7 +54,6 @@ public class DatesPageWithSelenide {
 
     private void replaceSliderToLeft(SelenideElement slider) {
         actions().dragAndDropBy(slider, -1000, 0).build().perform();
-
     }
 
     private void replaceSliderToRight(SelenideElement slider) {

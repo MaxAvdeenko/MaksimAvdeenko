@@ -40,7 +40,6 @@ public class DiffElPageWithSelenide {
     @FindBy(css = ".colors option")
     private ElementsCollection colorsCollection;
 
-    // TODO Pay attention on naming, please.
     @FindBy(css = "[name='Default Button']")
     private SelenideElement defaultButton;
 
@@ -71,18 +70,9 @@ public class DiffElPageWithSelenide {
 
     public void checkDiffElPageInterface() {
         assertEquals(natureElementsCollection.size(), 4);
-        // TODO I assume that Selenid allows us to mare this verification without cycle.
-      /*  for (SelenideElement checkbox : boxList) {
-            checkbox.shouldHave(Condition.visible);
-        }
-
-        for (SelenideElement radio : radiosList) {
-            radio.shouldHave(Condition.visible);
-        }*/
         checkboxes.should(visible);
         radios.should(visible);
         assertEquals(metalsCollection.size(), 4);
-        // TODO It is not really great idea to wind element it PO methods...
         colorsDropdown.should(visible);
         defaultButton.should(visible);
         button.should(visible);
