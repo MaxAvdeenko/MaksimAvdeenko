@@ -1,17 +1,17 @@
 package homeworks.hw4.ex1;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.Colors;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.Metals;
+import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.testng.Assert.assertEquals;
 
@@ -31,11 +31,14 @@ public class DiffElPageWithSelenide {
     @FindBy(css = "div.main-content div:nth-child(2)")
     private SelenideElement checkboxes;
 
+    @FindBy(css = "div.main-content div:nth-child(3)")
+    private SelenideElement radios;
+
     @FindBy(css = "div.main-content div:nth-child(3) label")
-    private List<SelenideElement> radiosList;
+    private ElementsCollection metalsCollection;
 
     @FindBy(css = ".colors option")
-    private List<SelenideElement> colorsList;
+    private ElementsCollection colorsCollection;
 
     // TODO Pay attention on naming, please.
     @FindBy(css = "[name='Default Button']")
@@ -54,7 +57,10 @@ public class DiffElPageWithSelenide {
     private List<SelenideElement> listLog;
 
     @FindBy(css = "div.main-content div:nth-child(2) label")
-    private List<SelenideElement> boxList;
+    private ElementsCollection natureElementsCollection;
+
+    @FindBy(css = ".colors")
+    private SelenideElement colorsDropdown;
 
     public void checkDiffElPage(DiffElPageData title) {
         serviceButton.click();
@@ -64,66 +70,61 @@ public class DiffElPageWithSelenide {
     }
 
     public void checkDiffElPageInterface() {
-        assertEquals(boxList.size(), 4);
+        assertEquals(natureElementsCollection.size(), 4);
         // TODO I assume that Selenid allows us to mare this verification without cycle.
-        for (SelenideElement checkbox : boxList) {
+      /*  for (SelenideElement checkbox : boxList) {
             checkbox.shouldHave(Condition.visible);
         }
 
         for (SelenideElement radio : radiosList) {
             radio.shouldHave(Condition.visible);
-        }
-        assertEquals(radiosList.size(), 4);
+        }*/
+        checkboxes.should(visible);
+        radios.should(visible);
+        assertEquals(metalsCollection.size(), 4);
         // TODO It is not really great idea to wind element it PO methods...
-        $(".colors").should(Condition.visible);
-        defaultButton.should(Condition.visible);
-        button.should(Condition.visible);
+        colorsDropdown.should(visible);
+        defaultButton.should(visible);
+        button.should(visible);
     }
 
     public void checkForRightSection() {
-        rightSection.should(Condition.visible);
+        rightSection.should(visible);
     }
 
     public void checkForLeftSection() {
-        leftSection.should(Condition.visible);
+        leftSection.should(visible);
     }
 
-    public void selectCheckboxes() {
-        boxList.get(0).click();
-        boxList.get(2).click();
+    public void checkNatureElementsLog(NatureElements wind, NatureElements water) {
+        listLog.get(1).shouldHave(text(wind.toString()));
+        listLog.get(0).shouldHave(text(water.toString()));
     }
 
-    public void checkboxCorrectLog(NatureElements wind, NatureElements water) {
-        listLog.get(0).shouldHave(text(wind.toString()));
-        listLog.get(1).shouldHave(text(water.toString()));
-    }
-
-    public void selectRadio() {
-        radiosList.get(3).click();
-    }
-
-    public void radiosCorectLog(Metals selen) {
+    public void checkMetalsLog(Metals selen) {
         listLog.get(0).shouldHave(text(selen.toString()));
     }
 
-    public void selectColor() {
-        $(".colors").click();
-        colorsList.get(3).click();
-    }
-
-    public void colorsCorrectLog(Colors yellow) {
+    public void checkColorsLog(Colors yellow) {
         listLog.get(0).shouldHave(text(yellow.toString()));
     }
 
-    public void unselectCheckboxes() {
-        boxList.get(0).click();
-        boxList.get(2).click();
-    }
-
     public void checkLog(NatureElements wind, NatureElements water) {
-        listLog.get(0).shouldHave(text(wind.toString()));
-        listLog.get(1).shouldHave(text(water.toString()));
+        listLog.get(1).shouldHave(text(wind.toString()));
+        listLog.get(0).shouldHave(text(water.toString()));
         listLog.get(0).shouldHave(text("false"));
         listLog.get(1).shouldHave(text("false"));
+    }
+
+    public void clickOnNatureElement(NatureElements natureElement) {
+        natureElementsCollection.findBy(text(natureElement.toString())).click();
+    }
+
+    public void selectMetal(Metals metal) {
+        metalsCollection.findBy(text(metal.toString())).click();
+    }
+
+    public void selectColor(Colors color) {
+        colorsCollection.findBy(text(color.toString())).click();
     }
 }

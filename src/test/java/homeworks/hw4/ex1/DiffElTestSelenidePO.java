@@ -3,15 +3,18 @@ package homeworks.hw4.ex1;
 import base.SelenideBase;
 import homeworks.hw3.enumsWithPageData.Users;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.Colors;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.Metals;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static homeworks.hw3.enumsWithPageData.HomePageData.HOME_PAGE_TITLE;
+import static homeworks.hw3.enumsWithPageData.HomePageData.INDEX_HTML_URL;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.Colors.YELLOW;
 import static homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData.DIFFEL_PAGE_TITLE;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.Metals.SELEN;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements.WATER;
+import static homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements.WIND;
 
 public class DiffElTestSelenidePO extends SelenideBase {
 
@@ -22,7 +25,7 @@ public class DiffElTestSelenidePO extends SelenideBase {
     public void initTest() {
         //1 Open test site by URL
         // TODO Basically, you should not hard-code strings...
-        open("https://epam.github.io/JDI/index.html");
+        open(INDEX_HTML_URL.toString());
         indexPage = page(IndexPageWithSelenide.class);
 
         diffElPage = page(DiffElPageWithSelenide.class);
@@ -67,32 +70,35 @@ public class DiffElTestSelenidePO extends SelenideBase {
         // TODO This method should be parametrised !
         // TODO This method should be named in a different way,
         // TODO just trying to think what are you going to select (in business/domain perspective)
-        diffElPage.selectCheckboxes();
+        diffElPage.clickOnNatureElement(WIND);
+        diffElPage.clickOnNatureElement(WATER);
 
         //12 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkboxCorrectLog(NatureElements.WIND, NatureElements.WATER);
+        diffElPage.checkNatureElementsLog(WIND, NatureElements.WATER);
 
         //13 Select radio
         // TODO This method should be parametrised !
         // TODO Same comments like .selectCheckboxes() method.
-        diffElPage.selectRadio();
+        diffElPage.selectMetal(SELEN);
+
 
         //14 Assert that for radiobutton there is a log row and value is corresponded to the status of radiobutton. 
         // TODO Naming
-        diffElPage.radiosCorectLog(Metals.SELEN);
+        diffElPage.checkMetalsLog(SELEN);
 
         //15 Select in dropdown
         // TODO Same as .selectCheckboxes() method
-        diffElPage.selectColor();
+        diffElPage.selectColor(YELLOW);
 
         //16 Assert that for dropdown there is a log row and value is corresponded to the selected value. 
-        diffElPage.colorsCorrectLog(Colors.YELLOW);
+        diffElPage.checkColorsLog(YELLOW);
 
         //17 Unselect and assert checkboxes
         // TODO Same as .selectCheckboxes() method
-        diffElPage.unselectCheckboxes();
+        diffElPage.clickOnNatureElement(WIND);
+        diffElPage.clickOnNatureElement(WATER);
 
         //18 Assert that for each checkbox there is an individual log row and value is corresponded to the status of checkbox. 
-        diffElPage.checkLog(NatureElements.WIND, NatureElements.WATER);
+        diffElPage.checkLog(WIND, NatureElements.WATER);
     }
 }
