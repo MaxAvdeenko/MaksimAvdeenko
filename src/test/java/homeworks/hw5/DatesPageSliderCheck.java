@@ -2,15 +2,19 @@ package homeworks.hw5;
 
 import base.SelenideBase;
 import homeworks.hw3.enumsWithPageData.Users;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
 import static homeworks.hw3.enumsWithPageData.HomePageData.HOME_PAGE_TITLE;
 import static homeworks.hw3.enumsWithPageData.HomePageData.INDEX_HTML_URL;
 import static homeworks.hw4.ex2.DatesPageData.DATES_PAGE_TITLE;
-
+@Feature("Web-element check on Dates page")
+@Listeners(AllureListener.class)
 public class DatesPageSliderCheck extends SelenideBase {
     private DatesPageAllure datesPage;
     private IndexPageAllure indexPage;
@@ -28,6 +32,7 @@ public class DatesPageSliderCheck extends SelenideBase {
         close();
     }
 
+    @Story("Dates page, check sliders")
     @Test
     public void DatesPageTest() {
         //2 Assert Browser title

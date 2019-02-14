@@ -3,8 +3,11 @@ package homeworks.hw5;
 import base.SelenideBase;
 import homeworks.hw3.enumsWithPageData.Users;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -15,7 +18,8 @@ import static homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData.DIFFEL_
 import static homeworks.hw4.ex1.enumsWithDiffElementsData.Metals.SELEN;
 import static homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements.WATER;
 import static homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements.WIND;
-
+@Feature("Web-element check on Different elements page")
+@Listeners(AllureListener.class)
 public class DiffElTestSelenidePO extends SelenideBase {
 
     private IndexPageAllure indexPage;
@@ -35,6 +39,7 @@ public class DiffElTestSelenidePO extends SelenideBase {
         close();
     }
 
+    @Story("Different elements page check")
     @Test
     public void DifferentElementsPageTest() {
 
