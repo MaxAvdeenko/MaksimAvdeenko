@@ -45,7 +45,7 @@ public class IndexPageAllure {
         assertEquals(getWebDriver().getTitle(), title.toString());
     }
 
-    @Step("Enter login and password")
+    @Step("Enter login and password {user.login} {user.password}")
     public void login(Users user) {
         loginIcon.click();
         userField.sendKeys(user.login);
@@ -53,7 +53,7 @@ public class IndexPageAllure {
         submitButton.click();
     }
 
-    @Step("Check login")
+    @Step("Check login {user.name}")
     public void checkUserIsLoggined(Users user) {
         usernameField.should(Condition.visible);
         usernameField.shouldHave(text(user.name));
