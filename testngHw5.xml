@@ -3,7 +3,7 @@
 <suite name="TestNG Suite Allure" parallel="methods" thread-count="3" >
 
 
-    <test name="Test 2">
+    <test name="Allure">
 
         <packages>
             <package name = "homeworks.hw5"/>

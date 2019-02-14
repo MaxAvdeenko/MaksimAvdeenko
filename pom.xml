@@ -73,7 +73,7 @@
                         </property>
                     </systemProperties>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src\test\resources\testng.xml</suiteXmlFile>
+                        <suiteXmlFile>testngHw5.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
