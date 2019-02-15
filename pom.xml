@@ -65,13 +65,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
-                    <systemProperties>
-                        <property>
-                            <name>allure.results.directory</name>
-                            <value>${project.build.directory}/allure-results</value>
-                        </property>
-                    </systemProperties>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/1.8.12/aspectjweaver-1.8.12.jar"
+                    </argLine>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                     <suiteXmlFiles>
                         <suiteXmlFile>testngHw5.xml</suiteXmlFile>
                     </suiteXmlFiles>
