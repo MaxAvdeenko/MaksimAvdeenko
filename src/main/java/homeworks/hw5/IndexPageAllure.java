@@ -45,7 +45,7 @@ public class IndexPageAllure {
         assertEquals(getWebDriver().getTitle(), title.toString());
     }
 
-    @Step("Enter login and password")
+    @Step("Enter login and password {user.login}")
     public void login(Users user) {
         loginIcon.click();
         userField.sendKeys(user.login);
