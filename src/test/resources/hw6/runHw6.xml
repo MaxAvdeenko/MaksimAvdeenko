@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Gherkin Suite">
+    <test name="Epam Site Cucumber Tests">
+
+        <classes>
+            <class name="homeworks.hw6.Runner"/>
+        </classes>
+
+    </test>
+</suite>

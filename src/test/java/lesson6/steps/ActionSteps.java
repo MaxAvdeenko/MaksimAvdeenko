@@ -11,7 +11,7 @@ public class ActionSteps {
         new SelenideIndexPage().login(username, password);
     }
 
-    @When("^I login as user '([^\"]*)'$")
+    //@When("^I login as user '([^\"]*)'$")
     public void iLoginAsUser(User user) {
         new SelenideIndexPage().login(user);
     }
