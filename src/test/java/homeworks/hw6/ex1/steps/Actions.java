@@ -17,22 +17,22 @@ public class Actions {
     private DiffElPagePO diffElPage = page(DiffElPagePO.class);
 
     @When("^I login as '(.+)'$")
-    public void login(Users user){
+    public void login(Users user) {
         indexPagePO.login(user);
     }
 
     @When("^I click on Service in the header$")
-    public void clickOnService(){
+    public void clickOnService() {
         indexPagePO.clickService();
     }
 
     @When("^I click on Service in the left section$")
-    public void clickOnServiceAtTheLeft(){
+    public void clickOnServiceAtTheLeft() {
         indexPagePO.clickLeftService();
     }
 
     @When("^I open Different Elements Page$")
-    public void openDiffElPage(){
+    public void openDiffElPage() {
         open(DIFFEl_HTML_URL.toString());
     }
 

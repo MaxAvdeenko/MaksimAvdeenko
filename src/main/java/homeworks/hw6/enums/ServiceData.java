@@ -1,6 +1,6 @@
 package homeworks.hw6.enums;
 
-public enum  ServiceData {
+public enum ServiceData {
     SUPPORT("Support"),
     DATES("Dates"),
     COMPLEX_TABLE("Complex Table"),

@@ -11,7 +11,7 @@ public class Assertions {
     private UserTablePO userTablePO = page(UserTablePO.class);
 
     @Then("^User Table page is opened$")
-    public void checkUserTablePageTitle(){
+    public void checkUserTablePageTitle() {
         userTablePO.checkTitle();
     }
 
@@ -46,7 +46,7 @@ public class Assertions {
     }
 
     @Then("^(\\d+) log row has '(.+)' text in log section$")
-    public void logRowHasTextInLogSection(int row, String value){
+    public void logRowHasTextInLogSection(int row, String value) {
         userTablePO.checkLog(row, value);
     }
 

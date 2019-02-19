@@ -13,22 +13,22 @@ public class Actions {
     private UserTablePO userTablePO = page(UserTablePO.class);
 
     @And("^I login as user '(.+)'$")
-    public void login(Users user){
+    public void login(Users user) {
         indexPagePO.login(user);
     }
 
     @When("^I click on Service button in Header$")
-    public void clickService(){
+    public void clickService() {
         indexPagePO.clickService();
     }
 
     @And("^I click on User Table button in Service dropdown$")
-    public void clickUserTable(){
+    public void clickUserTable() {
         indexPagePO.userTableClick();
     }
 
     @When("^I select 'vip' checkbox for '(.+)'$")
-    public void iSelectVipCheckboxFor(String user){
+    public void iSelectVipCheckboxFor(String user) {
         userTablePO.selectVip(user);
     }
 

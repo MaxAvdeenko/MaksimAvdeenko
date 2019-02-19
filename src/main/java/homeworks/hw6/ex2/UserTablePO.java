@@ -41,42 +41,42 @@ public class UserTablePO {
         assertEquals(getWebDriver().getTitle(), USER_TABLE_PAGE_TITLE.toString());
     }
 
-    public void checkNumperType(int count){
+    public void checkNumperType(int count) {
         typeDropdowns.shouldBe(CollectionCondition.size(count));
         for (SelenideElement numberTypeDropdown : typeDropdowns) {
             numberTypeDropdown.should(visible);
         }
     }
 
-    public void checkUsernamesCount(int count){
+    public void checkUsernamesCount(int count) {
         usernames.shouldBe(CollectionCondition.size(count));
         for (SelenideElement username : usernames) {
             username.should(visible);
         }
     }
 
-    public void checkImagesCount(int count){
+    public void checkImagesCount(int count) {
         images.shouldBe(CollectionCondition.size(count));
         for (SelenideElement image : images) {
             image.should(visible);
         }
     }
 
-    public void checkDescrTexts(int count){
+    public void checkDescrTexts(int count) {
         descrTexts.shouldBe(CollectionCondition.size(count));
         for (SelenideElement descrText : descrTexts) {
             descrText.should(visible);
         }
     }
 
-    public void checkCheckboxesCount(int count){
+    public void checkCheckboxesCount(int count) {
         checkboxes.shouldBe(CollectionCondition.size(count));
         for (SelenideElement checkbox : checkboxes) {
             checkbox.should(visible);
         }
     }
 
-    public void checkUserTableValues(List<ComicsHero> heroes){
+    public void checkUserTableValues(List<ComicsHero> heroes) {
         List<String> numbers = heroes.stream().map(ComicsHero::getNumber).collect(Collectors.toList());
         List<String> users = heroes.stream().map(ComicsHero::getUser).collect(Collectors.toList());
         List<String> descriptions = heroes.stream().map(ComicsHero::getDescription).collect(Collectors.toList());
@@ -88,21 +88,21 @@ public class UserTablePO {
         descrTexts.shouldHave(CollectionCondition.texts(descriptions));
     }
 
-    public void selectVip(String user){
+    public void selectVip(String user) {
         List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(Collectors.toList());
         checkboxes.get(usernamesList.indexOf(user)).click();
     }
 
-    public void checkLog(int row, String value){
-        log.get(row-1).shouldHave(text(value));
+    public void checkLog(int row, String value) {
+        log.get(row - 1).shouldHave(text(value));
     }
 
-    public void clickOnType(String user){
+    public void clickOnType(String user) {
         List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(Collectors.toList());
         typeDropdowns.get(usernamesList.indexOf(user)).click();
     }
 
-    public void checkDropdownValues(List<String> values){
+    public void checkDropdownValues(List<String> values) {
         typeDropdowns.get(0).$$("option").shouldHave(CollectionCondition.texts(values));
     }
 }

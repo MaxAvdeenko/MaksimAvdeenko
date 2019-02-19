@@ -97,7 +97,7 @@ public class IndexPagePO {
         description.should(visible);
     }
 
-    public void clickService(){
+    public void clickService() {
         serviceButton.click();
     }
 
@@ -107,11 +107,11 @@ public class IndexPagePO {
         serviceMenu.shouldHave(texts(expectedTexts));
     }
 
-    public void clickLeftService(){
+    public void clickLeftService() {
         serviceButtonLeft.click();
     }
 
-    public void userTableClick(){
+    public void userTableClick() {
         userTableButton.click();
     }
 }

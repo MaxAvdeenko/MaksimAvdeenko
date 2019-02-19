@@ -25,36 +25,37 @@ public class Assertions {
     }
 
     @Then("^Username should be as for '(.+)'$")
-    public void checkUsername(Users user){
+    public void checkUsername(Users user) {
         indexPagePO.checkUserIsLoggined(user);
     }
 
     @And("^There are 4 images, texts, headline and description$")
-    public void checkElements(){
+    public void checkElements() {
         indexPagePO.checkAllElements();
     }
 
     @Then("^Service dropdown menu contains all options:$")
-    public void checkAllOptions(List<ServiceData> options){
+    public void checkAllOptions(List<ServiceData> options) {
         indexPagePO.checkService(options);
     }
 
     @Then("^Left Service dropdown menu contains all same options like in the header Service$")
-    public void checkLeftServiceMenu(){
+    public void checkLeftServiceMenu() {
         indexPagePO.checkServiceLeftSection();
     }
+
     @Then("^I check that Different Elements page contains all need elements$")
-    public void checkDiffElPage(){
+    public void checkDiffElPage() {
         diffElPage.checkDiffElPageInterface();
     }
 
     @Then("^I check that Right section is displayed$")
-    public void checkRightSection(){
+    public void checkRightSection() {
         diffElPage.checkForRightSection();
     }
 
     @Then("^I check that Left section is displayed$")
-    public void checkLeftSection(){
+    public void checkLeftSection() {
         diffElPage.checkForLeftSection();
     }
 
