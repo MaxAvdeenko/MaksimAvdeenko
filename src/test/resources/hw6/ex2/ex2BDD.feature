@@ -1,7 +1,8 @@
 Feature: User Table Interface Test
 
+  # TODO What is the reason of step duplication ?
+  # TODO You should reuse as many steps as you can.
   Scenario: User Table Page test
-
     Given I am on Home Page
     And I login as user 'PITER'
     When I click on Service button in Header
