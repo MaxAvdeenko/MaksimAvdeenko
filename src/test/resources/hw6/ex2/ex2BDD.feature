@@ -3,9 +3,9 @@ Feature: User Table Interface Test
   # TODO What is the reason of step duplication ?
   # TODO You should reuse as many steps as you can.
   Scenario: User Table Page test
-    Given I am on Home Page
-    And I login as user 'PITER'
-    When I click on Service button in Header
+    Given I open EPAM JDI site Home page
+    When I login as 'PITER'
+    When I click on Service in the header
     And I click on User Table button in Service dropdown
     Then User Table page is opened
     And 6 NumberType Dropdowns are displayed on Users Table on User Table Page

@@ -8,9 +8,9 @@ import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
 import homeworks.hw6.ex1.DiffElPagePO;
 import homeworks.hw6.ex1.IndexPagePO;
 
-import static com.codeborne.selenide.Selenide.open;
+import java.util.List;
+
 import static com.codeborne.selenide.Selenide.page;
-import static homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData.DIFFEl_HTML_URL;
 
 public class Actions {
     private IndexPagePO indexPagePO = page(IndexPagePO.class);
@@ -31,15 +31,15 @@ public class Actions {
         indexPagePO.clickLeftService();
     }
 
-    @When("^I open Different Elements Page$")
-    public void openDiffElPage() {
-        open(DIFFEl_HTML_URL.toString());
+    @When("^I open '(.+)' Page$")
+    public void openAnySevicePage(String title) {
+        indexPagePO.openAnyServicePage(title);
     }
 
-    @When("^I click on checkboxes '(.+)' and '(.+)'$")
+   /* @When("^I click on checkboxes '(.+)' and '(.+)'$")
     public void iClickOnCheckboxesWATERAndWIND(NatureElements water, NatureElements wind) {
         diffElPage.clickOnNatureElement(water, wind);
-    }
+    }*/
 
     @When("^I click on radio '(.+)'$")
     public void iClickOnRadioSELEN(Metals metal) {
@@ -56,8 +56,18 @@ public class Actions {
         diffElPage.selectColor(color);
     }
 
-    @When("^I unselect checkboxes '(.+)' and '(.+)'$")
+    /*@When("^I unselect checkboxes '(.+)' and '(.+)'$")
     public void iUnselectCheckboxesWATERAndWIND(NatureElements element, NatureElements element2) {
         diffElPage.clickOnNatureElement(element, element2);
+    }*/
+
+    @When("^I select necessary checkboxes$")
+    public void iSelectNecessaryCheckboxes(List<NatureElements> elements) {
+        diffElPage.selectNatureEl(elements);
+    }
+
+    @When("^I unselect checkboxes necessary checkboxes$")
+    public void iUnselectCheckboxesNecessaryCheckboxes(List<NatureElements> elements) {
+        diffElPage.selectNatureEl(elements);
     }
 }

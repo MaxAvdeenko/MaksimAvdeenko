@@ -4,7 +4,6 @@ import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.Colors;
-import homeworks.hw4.ex1.enumsWithDiffElementsData.DiffElPageData;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.Metals;
 import homeworks.hw4.ex1.enumsWithDiffElementsData.NatureElements;
 import org.openqa.selenium.support.FindBy;
@@ -13,8 +12,6 @@ import java.util.List;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-import static org.testng.Assert.assertEquals;
 
 public class DiffElPagePO {
     @FindBy(css = "li.dropdown.open li")
@@ -62,12 +59,12 @@ public class DiffElPagePO {
     @FindBy(css = ".colors")
     private SelenideElement colorsDropdown;
 
-    public void checkDiffElPage(DiffElPageData title) {
+    /*public void checkDiffElPage(DiffElPageData title) {
         serviceButton.click();
         serviceMenuList.get(6).click();
         assertEquals(getWebDriver().getTitle(), title.toString());
 
-    }
+    }*/
 
     public void checkDiffElPageInterface() {
         //assertEquals(natureElementsCollection.size(), 4);
@@ -89,10 +86,10 @@ public class DiffElPagePO {
         leftSection.should(visible);
     }
 
-    public void checkNatureElementsLog(NatureElements wind, NatureElements water) {
+   /* public void checkNatureElementsLog(NatureElements wind, NatureElements water) {
         listLog.get(0).shouldHave(text(wind.toString()));
         listLog.get(1).shouldHave(text(water.toString()));
-    }
+    }*/
 
     public void checkMetalsLog(Metals selen) {
         listLog.get(0).shouldHave(text(selen.toString()));
@@ -102,17 +99,17 @@ public class DiffElPagePO {
         listLog.get(0).shouldHave(text(yellow.toString()));
     }
 
-    public void checkLog(NatureElements wind, NatureElements water) {
+   /* public void checkLog(NatureElements wind, NatureElements water) {
         listLog.get(1).shouldHave(text(wind.toString()));
         listLog.get(0).shouldHave(text(water.toString()));
         listLog.get(0).shouldHave(text("false"));
         listLog.get(1).shouldHave(text("false"));
-    }
+    }*/
 
-    public void clickOnNatureElement(NatureElements water, NatureElements wind) {
+   /* public void clickOnNatureElement(NatureElements water, NatureElements wind) {
         natureElementsCollection.findBy(text(water.toString())).click();
         natureElementsCollection.findBy(text(wind.toString())).click();
-    }
+    }*/
 
     public void selectMetal(Metals metal) {
         metalsCollection.findBy(text(metal.toString())).click();
@@ -124,5 +121,28 @@ public class DiffElPagePO {
 
     public void clickOnColorsDropdown() {
         colorsDropdown.click();
+    }
+
+    public void selectNatureEl(List<NatureElements> elements) {
+        for (NatureElements element : elements) {
+            natureElementsCollection.findBy(text(element.toString())).click();
+        }
+    }
+
+    public void logCheck(List<NatureElements> elements) {
+        int k=0;
+        for(int i=elements.size()-1; i>0; i--){
+            listLog.get(i).shouldHave(text(elements.get(k).toString()));
+            listLog.get(i).shouldHave(text("true"));
+            k++;
+        }
+    }
+    public void logUnselecttCheck(List<NatureElements> elements){
+        int k=0;
+        for(int i=elements.size()-1; i>0; i--){
+            listLog.get(i).shouldHave(text(elements.get(k).toString()));
+            listLog.get(i).shouldHave(text("false"));
+            k++;
+        }
     }
 }

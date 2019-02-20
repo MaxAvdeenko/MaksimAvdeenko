@@ -114,4 +114,9 @@ public class IndexPagePO {
     public void userTableClick() {
         userTableButton.click();
     }
+
+    public void openAnyServicePage(String title){
+        serviceButton.click();
+        serviceMenu.findBy(text(title)).click();
+    }
 }

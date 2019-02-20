@@ -59,10 +59,10 @@ public class Assertions {
         diffElPage.checkForLeftSection();
     }
 
-    @Then("^I check that there is a log for '(.+)' and '(.+)' checkboxes$")
+    /*@Then("^I check that there is a log for '(.+)' and '(.+)' checkboxes$")
     public void iCheckThatThereIsALogForSelectedCheckboxes(NatureElements water, NatureElements wind) {
         diffElPage.checkNatureElementsLog(wind, water);
-    }
+    }*/
 
     @Then("^I check that there is a log for '(.+)' radio$")
     public void iCheckThatThereIsALogForSELEN(Metals metal) {
@@ -74,9 +74,19 @@ public class Assertions {
         diffElPage.checkColorsLog(color);
     }
 
-    @Then("^I check that there is a log for '(.+)' and '(.+)' and they are unselected$")
+    /*@Then("^I check that there is a log for '(.+)' and '(.+)' and they are unselected$")
     public void iCheckThatThereIsALogForWATERAndWINDAndTheyAreUnselected(NatureElements element,
                                                                          NatureElements element2) {
         diffElPage.checkLog(element, element2);
+    }*/
+
+    @Then("^I check that there is a log for selected checkboxes$")
+    public void iCheckThatThereIsALogForSelectedCheckboxes(List<NatureElements> elements) {
+        diffElPage.logCheck(elements);
+    }
+
+    @Then("^I check that there is a log for unselected checkboxes$")
+    public void iCheckThatThereIsALogForUnselectedCheckboxes(List<NatureElements> elements) {
+        diffElPage.logUnselecttCheck(elements);
     }
 }
