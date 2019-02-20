@@ -8,10 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.codeborne.selenide.CollectionCondition.*;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static homeworks.hw6.enums.UserTablePageData.USER_TABLE_PAGE_TITLE;
+import static java.util.stream.Collectors.*;
 import static org.testng.Assert.assertEquals;
 
 public class UserTablePO {
@@ -42,54 +44,52 @@ public class UserTablePO {
     }
 
     public void checkNumperType(int count) {
-        typeDropdowns.shouldBe(CollectionCondition.size(count));
+        typeDropdowns.shouldBe(size(count));
         for (SelenideElement numberTypeDropdown : typeDropdowns) {
             numberTypeDropdown.should(visible);
         }
     }
 
     public void checkUsernamesCount(int count) {
-        usernames.shouldBe(CollectionCondition.size(count));
+        usernames.shouldBe(size(count));
         for (SelenideElement username : usernames) {
             username.should(visible);
         }
     }
 
     public void checkImagesCount(int count) {
-        images.shouldBe(CollectionCondition.size(count));
+        images.shouldBe(size(count));
         for (SelenideElement image : images) {
             image.should(visible);
         }
     }
 
     public void checkDescrTexts(int count) {
-        descrTexts.shouldBe(CollectionCondition.size(count));
+        descrTexts.shouldBe(size(count));
         for (SelenideElement descrText : descrTexts) {
             descrText.should(visible);
         }
     }
 
     public void checkCheckboxesCount(int count) {
-        checkboxes.shouldBe(CollectionCondition.size(count));
+        checkboxes.shouldBe(size(count));
         for (SelenideElement checkbox : checkboxes) {
             checkbox.should(visible);
         }
     }
 
     public void checkUserTableValues(List<ComicsHero> heroes) {
-        List<String> numbers = heroes.stream().map(ComicsHero::getNumber).collect(Collectors.toList());
-        List<String> users = heroes.stream().map(ComicsHero::getUser).collect(Collectors.toList());
-        List<String> descriptions = heroes.stream().map(ComicsHero::getDescription).collect(Collectors.toList());
-        userNumbers.shouldHave(CollectionCondition.size(numbers.size()));
-        userNumbers.shouldHave(CollectionCondition.texts(numbers));
-        usernames.shouldHave(CollectionCondition.size(users.size()));
-        usernames.shouldHave(CollectionCondition.texts(users));
-        descrTexts.shouldHave(CollectionCondition.size(descriptions.size()));
-        descrTexts.shouldHave(CollectionCondition.texts(descriptions));
+        List<String> numbers = heroes.stream().map(ComicsHero::getNumber).collect(toList());
+        List<String> users = heroes.stream().map(ComicsHero::getUser).collect(toList());
+        List<String> descriptions = heroes.stream().map(ComicsHero::getDescription).collect(toList());
+
+        userNumbers.shouldHave(size(numbers.size())).shouldHave(texts(numbers));
+        usernames.shouldHave(size(users.size())).shouldHave(texts(users));
+        descrTexts.shouldHave(size(descriptions.size())).shouldHave(texts(descriptions));
     }
 
     public void selectVip(String user) {
-        List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(Collectors.toList());
+        List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(toList());
         checkboxes.get(usernamesList.indexOf(user)).click();
     }
 
@@ -98,11 +98,11 @@ public class UserTablePO {
     }
 
     public void clickOnType(String user) {
-        List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(Collectors.toList());
+        List<String> usernamesList = usernames.stream().map(SelenideElement::getText).collect(toList());
         typeDropdowns.get(usernamesList.indexOf(user)).click();
     }
 
     public void checkDropdownValues(List<String> values) {
-        typeDropdowns.get(0).$$("option").shouldHave(CollectionCondition.texts(values));
+        typeDropdowns.get(0).$$("option").shouldHave(texts(values));
     }
 }
