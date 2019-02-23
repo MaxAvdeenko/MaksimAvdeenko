@@ -10,15 +10,9 @@ import org.testng.annotations.Test;
 
 public class JdiSimpleExpample {
 
-   /* IndexPageJdi indexPageJdi;
-    private WebDriver driver;*/
 
     @BeforeSuite
     public void beforeSuite() {
-        /*setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.navigate().to("https://epam.github.io/JDI/index.html");
-        indexPageJdi = PageFactory.initElements(driver, IndexPageJdi.class);*/
         PageFactory.initElements(JdiSite.class);
     }
 
