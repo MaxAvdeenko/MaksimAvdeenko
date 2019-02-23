@@ -18,13 +18,9 @@ Feature: Home And Different Elements Pages Test
       | PERFORMANCE   |
     When I click on Service in the left section
     Then Left Service dropdown menu contains all same options like in the header Service
-    # TODO It will be better if you create one single step, that can be used in order to open any kind of pages.
     When I open 'Different elements' Page
     Then I check that Different Elements page contains all need elements
     Then I check that Right section is displayed
-    # TODO It might be possible(from business perspective) to select from 1 to 4
-    # TODO nature elements at once, but in this method, you can select only 2,
-    # TODO in the other words, it will be better with the list of the nature elements.
     When I select necessary checkboxes
       | WATER |
       | WIND  |

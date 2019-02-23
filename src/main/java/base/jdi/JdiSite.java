@@ -1,6 +1,6 @@
-package base.jdi.lesson1;
+package base.jdi;
 
-import base.jdi.lesson1.pages.IndexPageJdi;
+import base.jdi.pages.IndexPageJdi;
 import com.epam.jdi.light.elements.pageobjects.annotations.JSite;
 import com.epam.jdi.light.elements.pageobjects.annotations.Url;
 

@@ -1,6 +1,7 @@
 package jdi.lesson1;
 
-import base.jdi.lesson1.JdiSite;
+import base.jdi.JdiSite;
+import base.jdi.entities.User;
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.ui.html.PageFactory;
 import org.testng.annotations.AfterSuite;
@@ -25,7 +26,7 @@ public class JdiSimpleExpample {
     public void SimpleJdiTest() {
         //indexPageJdi.login("epam", "1234");
         JdiSite.indexPageJdi.open();
-        JdiSite.indexPageJdi.login("epam","1234");
+        JdiSite.indexPageJdi.login(User.PITER);
     }
 
     @AfterSuite

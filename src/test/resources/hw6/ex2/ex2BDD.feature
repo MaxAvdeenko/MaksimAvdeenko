@@ -1,7 +1,5 @@
 Feature: User Table Interface Test
 
-  # TODO What is the reason of step duplication ?
-  # TODO You should reuse as many steps as you can.
   Scenario: User Table Page test
     Given I open EPAM JDI site Home page
     When I login as 'PITER'
