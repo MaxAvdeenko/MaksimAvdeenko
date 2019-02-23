@@ -65,30 +65,31 @@ public class MetalsAndColorsPage extends WebPage {
         natureElements.select(element2.toString());
     }
 
-    public void selectColor(Colors color){
+    public void selectColor(Colors color) {
         colors.select(color.toString());
     }
 
-    public void selectMetal(Metals metal){
+    public void selectMetal(Metals metal) {
         metals.select(metal.toString());
     }
-    public void selectVegetables(Vegetables vegetable1, Vegetables vegetable2){
+
+    public void selectVegetables(Vegetables vegetable1, Vegetables vegetable2) {
         vegetables.select(vegetable1.toString());
         vegetables.select(vegetable2.toString());
         vegetables.select(Vegetables.VEGETABLES.toString());
     }
 
-    public void clickSubmit(){
+    public void clickSubmit() {
         submit.click();
     }
 
     public void checkResultLog(int sum, NatureElements element1, NatureElements element2, Colors color,
-                               Metals metal, Vegetables vegetable1, Vegetables vegetable2){
+                               Metals metal, Vegetables vegetable1, Vegetables vegetable2) {
         assertEquals(resultLog.get(0).text(), "Summary: " + sum);
         assertEquals(resultLog.get(1).text(), "Elements: " + element1.toString() + ", " + element2.toString());
         assertEquals(resultLog.get(2).text(), "Color: " + color.toString());
-        assertEquals(resultLog.get(3).text(),"Metal: " + metal.toString());
-        assertEquals(resultLog.get(4).text(),"Vegetables: " + vegetable1.toString()
+        assertEquals(resultLog.get(3).text(), "Metal: " + metal.toString());
+        assertEquals(resultLog.get(4).text(), "Vegetables: " + vegetable1.toString()
                 + ", " + vegetable2.toString());
     }
 
@@ -96,7 +97,7 @@ public class MetalsAndColorsPage extends WebPage {
         assertTrue(listLog.get(0).text().contains("Summary (Odd): value changed to " + odd));
     }
 
-    public void checkEvenLog(String even){
+    public void checkEvenLog(String even) {
         listLog.refresh();
         assertTrue(listLog.get(0).text().contains("Summary (Even): value changed to " + even));
     }
@@ -113,7 +114,7 @@ public class MetalsAndColorsPage extends WebPage {
         assertTrue(listLog.get(0).text().contains("Colors: value changed to " + color.toString()));
     }
 
-    public void checkMetalsLog(Metals metal){
+    public void checkMetalsLog(Metals metal) {
         listLog.refresh();
         assertTrue(listLog.get(0).text().contains("Metals: value changed to " + metal.toString()));
     }
