@@ -3,9 +3,7 @@ package homeworks.hw7;
 import base.jdi.entities.User;
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.ui.html.PageFactory;
-import homeworks.hw7.enums.Colors;
-import homeworks.hw7.enums.Metals;
-import homeworks.hw7.enums.Vegetables;
+import homeworks.hw7.enums.*;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -42,16 +40,16 @@ public class MetalsAndColorsPageTest {
         JdiSite.jdiIndexPage.checkTittle(WebDriverFactory.getDriver().getTitle(), METALS_TITLE);
 
         //6. Select 3 from odd
-        JdiSite.metalsAndColorsPage.selectOdd("3");
+        JdiSite.metalsAndColorsPage.selectOdd(Odd.TREE);
 
         //7. Assert that 3 is selected
-        JdiSite.metalsAndColorsPage.checkOddLog("3");
+        JdiSite.metalsAndColorsPage.checkOddLog(Odd.TREE);
 
         //8. Select 8 from even
-        JdiSite.metalsAndColorsPage.selectEven("8");
+        JdiSite.metalsAndColorsPage.selectEven(Even.EIGHT);
 
         //9. Assert that 8 is selected
-        JdiSite.metalsAndColorsPage.checkEvenLog("8");
+        JdiSite.metalsAndColorsPage.checkEvenLog(Even.EIGHT);
 
         //10. Select Water and Fire from Elements
         JdiSite.metalsAndColorsPage.selectNatureElements(WATER, FIRE);
@@ -81,7 +79,7 @@ public class MetalsAndColorsPageTest {
         JdiSite.metalsAndColorsPage.checkSubmitIsClicked();
 
         //19. Assert that all necessary elements are displayed in result log
-        JdiSite.metalsAndColorsPage.checkResultLog(11, WATER, FIRE, Colors.RED, Metals.SELEN,
+        JdiSite.metalsAndColorsPage.checkResultLog(Odd.TREE, Even.EIGHT, WATER, FIRE, Colors.RED, Metals.SELEN,
                 Vegetables.CUCUMBER, Vegetables.TOMATO);
 
     }

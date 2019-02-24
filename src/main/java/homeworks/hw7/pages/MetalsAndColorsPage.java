@@ -7,10 +7,7 @@ import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.Css;
 import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.jdi.light.ui.html.complex.RadioButtons;
-import homeworks.hw7.enums.Colors;
-import homeworks.hw7.enums.Metals;
-import homeworks.hw7.enums.NatureElements;
-import homeworks.hw7.enums.Vegetables;
+import homeworks.hw7.enums.*;
 import org.openqa.selenium.support.FindBy;
 
 import static org.testng.Assert.assertEquals;
@@ -52,12 +49,12 @@ public class MetalsAndColorsPage extends WebPage {
     @Css("[class='panel-body-list logs'] li")
     public WebList listLog;
 
-    public void selectOdd(String value) {
-        odds.select(value);
+    public void selectOdd(Odd odd) {
+        odds.select(odd.toString());
     }
 
-    public void selectEven(String value) {
-        even.select(value);
+    public void selectEven(Even even1) {
+        even.select(even1.toString());
     }
 
     public void selectNatureElements(NatureElements element1, NatureElements element2) {
@@ -83,8 +80,9 @@ public class MetalsAndColorsPage extends WebPage {
         submit.click();
     }
 
-    public void checkResultLog(int sum, NatureElements element1, NatureElements element2, Colors color,
+    public void checkResultLog(Odd odd, Even even1, NatureElements element1, NatureElements element2, Colors color,
                                Metals metal, Vegetables vegetable1, Vegetables vegetable2) {
+        int sum = Integer.parseInt(odd.toString()) + Integer.parseInt(even1.toString());
         assertEquals(resultLog.get(0).text(), "Summary: " + sum);
         assertEquals(resultLog.get(1).text(), "Elements: " + element1.toString() + ", " + element2.toString());
         assertEquals(resultLog.get(2).text(), "Color: " + color.toString());
@@ -93,13 +91,13 @@ public class MetalsAndColorsPage extends WebPage {
                 + ", " + vegetable2.toString());
     }
 
-    public void checkOddLog(String odd) {
-        assertTrue(listLog.get(0).text().contains("Summary (Odd): value changed to " + odd));
+    public void checkOddLog(Odd odd) {
+        assertTrue(listLog.get(0).text().contains("Summary (Odd): value changed to " + odd.toString()));
     }
 
-    public void checkEvenLog(String even) {
+    public void checkEvenLog(Even even1) {
         listLog.refresh();
-        assertTrue(listLog.get(0).text().contains("Summary (Even): value changed to " + even));
+        assertTrue(listLog.get(0).text().contains("Summary (Even): value changed to " + even1.toString()));
     }
 
     public void checkNatElLog(NatureElements element1, NatureElements element2) {
