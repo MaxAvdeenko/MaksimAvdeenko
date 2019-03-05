@@ -1,47 +1,16 @@
 package homeworks.hw7.pages;
 
-import com.epam.jdi.light.elements.complex.Droplist;
 import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.composite.WebPage;
-import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.Css;
-import com.epam.jdi.light.ui.html.common.Button;
-import com.epam.jdi.light.ui.html.complex.RadioButtons;
 import homeworks.hw7.enums.*;
-import org.openqa.selenium.support.FindBy;
+import homeworks.hw7.forms.MetalsForm;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class MetalsAndColorsPage extends WebPage {
 
-    @FindBy(css = "#odds-selector p")
-    public RadioButtons odds;
-
-    @FindBy(css = "#even-selector p")
-    public RadioButtons even;
-
-    @JDropdown(root = "div[ui=combobox]", value = "input",
-            list = "li", expand = ".caret")
-    public Droplist metals;
-
-    @JDropdown(root = "div[ui=dropdown]", value = ".filter-option",
-            list = "li", expand = ".caret")
-    public Droplist colors;
-
-    @JDropdown(root = "div[ui=droplist]", value = "input:checked",
-            list = "li", expand = ".caret")
-    public Droplist vegetables;
-
-    /*@JCheckList(value = @com.epam.jdi.light.elements.pageobjects.annotations.FindBy(css = ".vertical-group"),
-            isSelected = @com.epam.jdi.light.elements.pageobjects.annotations.FindBy(css = "label:before"))
-    public Checklist nature;*/
-
-    @Css(".vertical-group p")
-    public WebList natureElements;
-
-    @FindBy(css = "#submit-button")
-    public Button submit;
 
     @Css("[class='panel-body-list results'] li")
     public WebList resultLog;
@@ -49,35 +18,37 @@ public class MetalsAndColorsPage extends WebPage {
     @Css("[class='panel-body-list logs'] li")
     public WebList listLog;
 
+    MetalsForm metalsForm;
+
     public void selectOdd(Odd odd) {
-        odds.select(odd.toString());
+        metalsForm.odds.select(odd.toString());
     }
 
     public void selectEven(Even even1) {
-        even.select(even1.toString());
+        metalsForm.even.select(even1.toString());
     }
 
     public void selectNatureElements(NatureElements element1, NatureElements element2) {
-        natureElements.select(element1.toString());
-        natureElements.select(element2.toString());
+        metalsForm.natureElements.select(element1.toString());
+        metalsForm.natureElements.select(element2.toString());
     }
 
     public void selectColor(Colors color) {
-        colors.select(color.toString());
+        metalsForm.colors.select(color.toString());
     }
 
     public void selectMetal(Metals metal) {
-        metals.select(metal.toString());
+        metalsForm.metals.select(metal.toString());
     }
 
     public void selectVegetables(Vegetables vegetable1, Vegetables vegetable2) {
-        vegetables.select(vegetable1.toString());
-        vegetables.select(vegetable2.toString());
-        vegetables.select(Vegetables.VEGETABLES.toString());
+        metalsForm.vegetables.select(vegetable1.toString());
+        metalsForm.vegetables.select(vegetable2.toString());
+        metalsForm.vegetables.select(Vegetables.VEGETABLES.toString());
     }
 
     public void clickSubmit() {
-        submit.click();
+        metalsForm.submit.click();
     }
 
     public void checkResultLog(Odd odd, Even even1, NatureElements element1, NatureElements element2, Colors color,
