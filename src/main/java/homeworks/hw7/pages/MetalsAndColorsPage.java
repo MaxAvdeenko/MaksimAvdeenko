@@ -19,9 +19,17 @@ public class MetalsAndColorsPage extends WebPage {
     public void checkResultLog(MetalsColorsData data) {
         int sum = Integer.parseInt(data.odd) + Integer.parseInt(data.even);
         assertEquals(resultLog.get(0).text(), "Summary: " + sum);
-        assertEquals(resultLog.get(1).text(), "Elements: " + data.nature[0] + ", " + data.nature[1]);
+        String logForNature = "Elements: ";
+        for (String s : data.nature) {
+            logForNature = logForNature + s + ", ";
+        }
+        assertEquals(resultLog.get(1).text(), logForNature.substring(0, logForNature.length()-2));
         assertEquals(resultLog.get(2).text(), "Color: " + data.color);
         assertEquals(resultLog.get(3).text(), "Metal: " + data.metal);
-        assertEquals(resultLog.get(4).text(), "Vegetables: " + data.vegetables[0] + ", " + data.vegetables[1]);
+        String logForVeges = "Vegetables: ";
+        for (String vegetable : data.vegetables) {
+            logForVeges = logForVeges + vegetable + ", ";
+        }
+        assertEquals(resultLog.get(4).text(), logForVeges.substring(0, logForVeges.length()-2));
     }
 }
