@@ -3,15 +3,13 @@ package homeworks.hw7;
 import base.jdi.entities.User;
 import com.epam.jdi.light.driver.WebDriverFactory;
 import com.epam.jdi.light.ui.html.PageFactory;
-import homeworks.hw7.enums.*;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
-import static homeworks.hw7.enums.MetalsAndColorsData.METALS_TEXT;
-import static homeworks.hw7.enums.MetalsAndColorsData.METALS_TITLE;
-import static homeworks.hw7.enums.NatureElements.FIRE;
-import static homeworks.hw7.enums.NatureElements.WATER;
+import static homeworks.hw7.utils.DefaultDataForMetalsColors.DEFAULT_DATA_FOR_METALS_AND_COLORS;
+import static homeworks.hw7.utils.MetalsAndColorsData.METALS_TEXT;
+import static homeworks.hw7.utils.MetalsAndColorsData.METALS_TITLE;
 
 
 public class MetalsAndColorsPageTest {
@@ -39,48 +37,11 @@ public class MetalsAndColorsPageTest {
         //5. Assert that Metals&Colors page is opened
         JdiSite.jdiIndexPage.checkTittle(WebDriverFactory.getDriver().getTitle(), METALS_TITLE);
 
-        //6. Select 3 from odd
-        JdiSite.metalsAndColorsPage.selectOdd(Odd.TREE);
+        //6. Fill all elements
+        JdiSite.metalsAndColorsPage.metalsForm.submit(DEFAULT_DATA_FOR_METALS_AND_COLORS);
 
-        //7. Assert that 3 is selected
-        JdiSite.metalsAndColorsPage.checkOddLog(Odd.TREE);
-
-        //8. Select 8 from even
-        JdiSite.metalsAndColorsPage.selectEven(Even.EIGHT);
-
-        //9. Assert that 8 is selected
-        JdiSite.metalsAndColorsPage.checkEvenLog(Even.EIGHT);
-
-        //10. Select Water and Fire from Elements
-        JdiSite.metalsAndColorsPage.selectNatureElements(WATER, FIRE);
-
-        //11. Assert that Water and Fire are selected
-        JdiSite.metalsAndColorsPage.checkNatElLog(WATER, FIRE);
-
-        //12. Select Red from colors
-        JdiSite.metalsAndColorsPage.selectColor(Colors.RED);
-
-        //13. Assert that Red color is selected
-        JdiSite.metalsAndColorsPage.checkColorsLog(Colors.RED);
-
-        //14. Select Selen from Metals
-        JdiSite.metalsAndColorsPage.selectMetal(Metals.SELEN);
-
-        //15. Assert that Selen is selected
-        JdiSite.metalsAndColorsPage.checkMetalsLog(Metals.SELEN);
-
-        //16. Select Cucumber and Tomato from vegetables
-        JdiSite.metalsAndColorsPage.selectVegetables(Vegetables.CUCUMBER, Vegetables.TOMATO);
-
-        //17. Click on submit button
-        JdiSite.metalsAndColorsPage.clickSubmit();
-
-        //18. Assert that submit button is clicked
-        JdiSite.metalsAndColorsPage.checkSubmitIsClicked();
-
-        //19. Assert that all necessary elements are displayed in result log
-        JdiSite.metalsAndColorsPage.checkResultLog(Odd.TREE, Even.EIGHT, WATER, FIRE, Colors.RED, Metals.SELEN,
-                Vegetables.CUCUMBER, Vegetables.TOMATO);
+        //7. Assert that all necessary elements are displayed in result log
+        JdiSite.metalsAndColorsPage.checkResultLog(DEFAULT_DATA_FOR_METALS_AND_COLORS);
 
     }
 

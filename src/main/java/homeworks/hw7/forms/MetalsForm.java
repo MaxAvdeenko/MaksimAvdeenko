@@ -7,9 +7,10 @@ import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.Css;
 import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.jdi.light.ui.html.complex.RadioButtons;
+import homeworks.hw7.utils.MetalsColorsData;
 import org.openqa.selenium.support.FindBy;
 
-public class MetalsForm extends Form {
+public class MetalsForm extends Form<MetalsColorsData> {
 
     @FindBy(css = "#odds-selector p")
     public RadioButtons odds;
@@ -25,13 +26,31 @@ public class MetalsForm extends Form {
             list = "li", expand = ".caret")
     public Droplist colors;
 
-    @JDropdown(root = "div[ui=droplist]", value = "input:checked",
-            list = "li", expand = ".caret")
-    public Droplist vegetables;
+    @JDropdown(root = "div[ui=droplist]",
+            value = ".dropdown-toggle",
+            list = "li",
+            expand = ".caret")
+    public static Droplist vegetables;
 
     @Css(".vertical-group p")
     public WebList natureElements;
 
     @FindBy(css = "#submit-button")
-    public Button submit;
+    public Button submitButton;
+
+    @Override
+    public void submit (MetalsColorsData data){
+        odds.select(data.odd);
+        even.select(data.even);
+        for (String s : data.nature) {
+            natureElements.select(s);
+        }
+        colors.select(data.color);
+        metals.select(data.metal);
+        vegetables.select(vegetables.getSelected());
+        for (String vegetable : data.vegetables) {
+            vegetables.select(vegetable);
+        }
+        submitButton.click();
+    }
 }

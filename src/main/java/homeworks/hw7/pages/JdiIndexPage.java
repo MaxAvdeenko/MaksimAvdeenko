@@ -5,8 +5,8 @@ import com.epam.jdi.light.elements.composite.WebPage;
 import com.epam.jdi.light.ui.html.common.Icon;
 import com.epam.jdi.light.ui.html.common.TextField;
 import com.epam.jdi.light.ui.html.complex.Menu;
-import homeworks.hw7.enums.MetalsAndColorsData;
 import homeworks.hw7.forms.LoginForm;
+import homeworks.hw7.utils.MetalsAndColorsData;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 

@@ -1,4 +1,4 @@
-package homeworks.hw7.enums;
+package homeworks.hw7.utils;
 
 public enum MetalsAndColorsData {
     METALS_TEXT("METALS & COLORS"),
