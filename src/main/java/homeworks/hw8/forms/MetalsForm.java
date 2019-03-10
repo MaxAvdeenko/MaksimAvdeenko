@@ -1,4 +1,4 @@
-package homeworks.hw7.forms;
+package homeworks.hw8.forms;
 
 import com.epam.jdi.light.elements.complex.Droplist;
 import com.epam.jdi.light.elements.complex.WebList;
@@ -7,10 +7,10 @@ import com.epam.jdi.light.elements.pageobjects.annotations.objects.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.simple.Css;
 import com.epam.jdi.light.ui.html.common.Button;
 import com.epam.jdi.light.ui.html.complex.RadioButtons;
-import homeworks.hw7.utils.MetalsColorsData;
+import homeworks.hw8.utils.MetalsColorsPOJO;
 import org.openqa.selenium.support.FindBy;
 
-public class MetalsForm extends Form<MetalsColorsData> {
+public class MetalsForm extends Form<MetalsColorsPOJO> {
 
     @FindBy(css = "#odds-selector p")
     public RadioButtons odds;
@@ -39,14 +39,14 @@ public class MetalsForm extends Form<MetalsColorsData> {
     public Button submitButton;
 
     @Override
-    public void submit(MetalsColorsData data) {
-        odds.select(data.odd);
-        even.select(data.even);
-        for (String s : data.nature) {
+    public void submit(MetalsColorsPOJO data) {
+        odds.select(String.valueOf(data.summary[0]));
+        even.select(String.valueOf(data.summary[1]));
+        for (String s : data.elements) {
             natureElements.select(s);
         }
         colors.select(data.color);
-        metals.select(data.metal);
+        metals.select(data.metals);
         vegetables.select(vegetables.getSelected());
         for (String vegetable : data.vegetables) {
             vegetables.select(vegetable);
