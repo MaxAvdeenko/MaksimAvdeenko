@@ -9,18 +9,19 @@ import homeworks.hw8.utils.MetalsColorsPOJO;
 import static org.testng.Assert.assertEquals;
 
 public class MetalsAndColorsPage extends WebPage {
-
-
     @Css("[class='panel-body-list results'] li")
     public WebList resultLog;
 
     public MetalsForm metalsForm;
 
     public void checkResultLog(MetalsColorsPOJO data) {
+        // TODO It will be better to transform MetalsColorsPOJO to List<String>
+        // TODO and compare it with List of the log's strings
         int sum = Integer.parseInt(data.summary[0].toString()) + Integer.parseInt(data.summary[1].toString());
         assertEquals(resultLog.get(0).text(), "Summary: " + sum);
         String logForNature = "Elements: ";
         for (String s : data.elements) {
+            // TODO Take a look on IDEA warning. It will be better with String::join.
             logForNature = logForNature + s + ", ";
         }
         assertEquals(resultLog.get(1).text(), logForNature.substring(0, logForNature.length() - 2));
