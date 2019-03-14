@@ -35,8 +35,8 @@ public class JdiIndexPage extends WebPage {
         navigation.select(metalsText.toString());
     }
 
-    public void checkTittle(String title, MetalsAndColorsData metalsText) {
-        Assert.assertEquals(title, metalsText.toString());
+    public void checkTittle(MetalsAndColorsData title) {
+        Assert.assertEquals(getTitle(), title.toString());
     }
 
 }

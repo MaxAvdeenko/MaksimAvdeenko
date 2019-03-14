@@ -8,6 +8,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import homeworks.hw8.utils.MetalsColorsPOJO;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -27,6 +28,7 @@ public class MetalsAndColorsJsonTest {
     public void beforeSuite() {
         PageFactory.initElements(JdiSite.class);
         //1. Open index page
+        WebDriverManager.chromedriver().version("73");
         JdiSite.jdiIndexPage.open();
 
         //2. Log in as Piter Chailovskii
@@ -58,7 +60,7 @@ public class MetalsAndColorsJsonTest {
 
         // TODO Take a look on JDI Page's methods
         //5. Assert that Metals&Colors page is opened
-        JdiSite.jdiIndexPage.checkTittle(WebDriverFactory.getDriver().getTitle(), METALS_TITLE);
+        JdiSite.jdiIndexPage.checkTittle(METALS_TITLE);
 
         //6. Fill all elements
         JdiSite.metalsAndColorsPage.metalsForm.submit(data);
