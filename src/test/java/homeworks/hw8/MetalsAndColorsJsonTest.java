@@ -58,7 +58,6 @@ public class MetalsAndColorsJsonTest {
         //4. Open Metals&Colors Page by header menu
         JdiSite.jdiIndexPage.goToMetalsAndColors(METALS_TEXT);
 
-        // TODO Take a look on JDI Page's methods
         //5. Assert that Metals&Colors page is opened
         JdiSite.jdiIndexPage.checkTittle(METALS_TITLE);
 

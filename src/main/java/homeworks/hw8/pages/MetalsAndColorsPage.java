@@ -20,12 +20,9 @@ public class MetalsAndColorsPage extends WebPage {
     public MetalsForm metalsForm;
 
     public void checkResultLog(MetalsColorsPOJO data) {
-        // TODO It will be better to transform MetalsColorsPOJO to List<String>
-        // TODO and compare it with List of the log's strings
         List<String> actual = new ArrayList<>();
         int sum = Integer.parseInt(data.summary[0].toString()) + Integer.parseInt(data.summary[1].toString());
         actual.add(0, "Summary: " + sum);
-        // TODO Take a look on IDEA warning. It will be better with String::join.
         String logForNature = "Elements: " + Joiner.on(", ").join(data.elements);
         actual.add(1, logForNature);
         actual.add(2, "Color: " + data.color);
